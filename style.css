@@ -151,9 +151,9 @@ h1{
   margin-bottom: 15%;
 }
 
+
 #prize1 {
-  width: 350px;
-  height: 100px;
+  width: 250px;
   background-color: #393939;
   padding: 40px;
   margin: 10px;
@@ -165,8 +165,7 @@ h1{
 }
 
 #prize2 {
-  width: 350px;
-  height: 100px;
+  width: 250px;
   background-color: #393939;
   padding: 40px;
   margin: 10px;
@@ -178,8 +177,7 @@ h1{
 }
 
 #prize3 {
-  width: 350px;
-  height: 100px;
+  width: 250px;
   background-color: #393939;
   padding: 40px;
   margin: 10px;
@@ -191,8 +189,7 @@ h1{
 }
 
 #prize4 {
-  width: 350px;
-  height: 100px;
+  width: 250px;
   background-color: #393939;
   padding: 40px;
   margin: 10px;
@@ -204,8 +201,7 @@ h1{
 }
 
 #prize5 {
-  width: 350px;
-  height: 100px;
+  width: 250px;
   background-color: #393939;
   padding: 40px;
   margin: 10px;
@@ -374,7 +370,6 @@ nav ul li a {
 }
 
 @media(max-width: 786px) {
-
   .logo {
         position: fixed;
         top: 0;
@@ -404,6 +399,9 @@ nav ul li a {
 
   .menu-icon {
         display: block;
+        width: auto;
+        margin-top: 10px;
+        margin-right: 20px;
   }
 
 }
