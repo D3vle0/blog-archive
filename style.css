@@ -213,7 +213,7 @@ h1{
 }
 
 #projblank {
-  font-size: 50px;
+  font-size: 30px;
 }
 
 #projtext {
@@ -598,7 +598,7 @@ nav a:hover::before {
 }
 
 #box4{
-  height: 100vh;
+  height: 60vh;
   width: 100%;
   background-image: url(./photo/6blur.jpg);
   background-size: cover;
@@ -606,9 +606,7 @@ nav a:hover::before {
   background-attachment: fixed;
 }
 
-#contactblank {
-  font-size: 50px;
-}
+
 
 #contacttext {
   font-size: 50px;
@@ -642,4 +640,40 @@ text-align: center;
 @-ms-viewport{
   width: extend-to-zoom;
   zoom: 1.0;
+}
+
+#margin {
+  padding: 50%;
+}
+
+#projbox {
+  background-image: url(./photo/projblur.PNG);
+  color: #fff;
+  text-align: center;
+  height: 60vh;
+  width: 100%;
+  background-size: cover;
+  display: table;
+  background-attachment: fixed;
+  margin: 0 auto;
+}
+
+#newproj {
+  font-size: 50px;
+}
+
+#newprojtext1 {
+  font-size: 20px;
+}
+
+#newprojtext2 {
+  font-size: 20px;
+}
+
+#newprojtext3 {
+  font-size: 20px;
+}
+
+#projbtn {
+  color: #fff;
 }
