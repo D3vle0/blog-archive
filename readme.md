@@ -1,7 +1,7 @@
 # Devleo's Webpage
 본 Repository 는 Google Play Developer 'Devleo' 의 공식 웹페이지입니다.   
 ```
-devleo.kro.kr
+devleo.ga
 ```
 
 2018.08.04 - CSS 코드 추가   
