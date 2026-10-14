@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Series on Devleo</title>
+    <link>https://devleo.wtf/series/</link>
+    <description>Recent content in Series on Devleo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>© 2022 Devleo</copyright><atom:link href="https://devleo.wtf/series/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hacking on Devleo</title>
+    <link>https://devleo.wtf/tags/hacking/</link>
+    <description>Recent content in hacking on Devleo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>© 2022 Devleo</copyright>
+    <lastBuildDate>Wed, 26 Jan 2022 21:04:28 +0900</lastBuildDate><atom:link href="https://devleo.wtf/tags/hacking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SuNiNaTaS 32 Solution</title>
+      <link>https://devleo.wtf/posts/suninatas-32/</link>
+      <pubDate>Wed, 26 Jan 2022 21:04:28 +0900</pubDate>
+      
+      <guid>https://devleo.wtf/posts/suninatas-32/</guid>
+      <description>문제 풀이 요약  USB 파일 시스템 복구 파일 데이터 확인  문제 풀이 제시 문제 경찰청으로 부터 연쇄 테러 용의자로 부터 압수한 USB 이미지 분석을 의뢰 받았다. 최초 분석을 신입 직원에게 맡겼으나 Hex Editor로 여기 저기 둘러 보다 실수로 특정 부분이 손상되고 이미지가 인식되지 않는다.
+당신은 포렌식 전문가의 자존심을 걸고 이미지를 살려 내고 다음 테러를 예방하는데 기여를 해야 한다.
+ 다음 테러 계획이 들어있는 문서의 수정 일시는? (UTC+9) 다음 테러 장소는?</description>
+    </item>
+    
+    <item>
+      <title>SuNiNaTaS 29 Solution</title>
+      <link>https://devleo.wtf/posts/suninatas-29/</link>
+      <pubDate>Tue, 25 Jan 2022 22:16:04 +0900</pubDate>
+      
+      <guid>https://devleo.wtf/posts/suninatas-29/</guid>
+      <description>문제 풀이 요약  header 체크 후 FTK Imager로 분석 dns host 파일 체크 키로거 프로그램 찾기 webcache를 통해 다운로드 기록 찾기  문제 풀이 유준혁은 PC가 고장나서 형 유성준에게 PC를 고쳐 달라고 했다. 그런데, 유성준은 동생의 PC를 고치면서 몇 가지 장난을 했다. 당신은 이 PC를 정상으로 돌려 놓아야 한다.
+ 웹 서핑은 잘 되는데, 네이버에만 들어가면 사이버 경찰청 차단 화면으로 넘어간다. 원인을 찾으면 Key가 보인다. 유성준이 설치 해 놓은 키로거의 절대경로 및 파일명은?</description>
+    </item>
+    
+    <item>
+      <title>SuNiNaTaS 28 Solution</title>
+      <link>https://devleo.wtf/posts/suninatas-28/</link>
+      <pubDate>Tue, 25 Jan 2022 21:57:59 +0900</pubDate>
+      
+      <guid>https://devleo.wtf/posts/suninatas-28/</guid>
+      <description>문제 풀이 요약  zip 파일 구조 분석 flag bit 변조 후 압축 해제 base64 decode  문제 풀이 문제에서 zip 파일이 하나 주어진다.
+그러나 어떤 문자열을 입력해봐도 풀리지 않고, fcrackzip 과 같은 zip 크래킹 툴로도 해결되지 않는다. 이 파일은 비밀번호가 걸려 있지 않은데 걸린 척 위장되어 있는 파일이다.
+flag bit이 암호화를 담당하는 부분인데, 해당 값을 00 00으로 변조하면 된다.
+압축을 풀면 아래의 파일들이 나오고, Am_I_Key.zip 안의 There_is_key.txt 에 dGE1dHlfSDR6M2xudXRfY29mZmVl 가 나온다.</description>
+    </item>
+    
+    <item>
+      <title>SuNiNaTaS 26 Solution</title>
+      <link>https://devleo.wtf/posts/suninatas-26/</link>
+      <pubDate>Tue, 25 Jan 2022 21:55:09 +0900</pubDate>
+      
+      <guid>https://devleo.wtf/posts/suninatas-26/</guid>
+      <description>문제 풀이 요약 빈도 분석
+문제 풀이 szqkagczvcvyabpsyincgozdainvscbnivpnzvbpnyfkqhzmmpcqhzygzgfcxznvvzgdfnvbpnjyifxmpcqhzygbpnoyaimygbzgngbvmpcqhzygcbpinnbzqndicgxhiztozgcfmpcqhzygbpnjyifxeagzyimpcqhzygbpneagzyidicgxhiztozgcfmpcqhzygcgxcoyaibzqnvyabpsyincggcbzygcfmpcqhzygszqzvbpnozivbvyabpsyincgozdainvscbnibyjzgcqnxcfcbcgzvaeagzyiyivngzyidicgxhiztnungbzvampcqhzygvpzhcgxbpnyfkqhzmdcqnvvpnzvbpnozivbonqcfnvscbnibyjzgbpnyfkqhzmdcqnvbpnjyifxmpcqhzygvpzhvbpnoyaimygbzgngbvmpcqhzygvpzhvcgxbpndicgxhiztozgcfvpnzvygnyobpnqyvbpzdpfkinmydgzlnxcbpfnbnvcgxqnxzcozdainvzgvyabpsyinccvyochizfbpzvkncivpnzvicgsnxvnmygxzgbpnjyifxrkbpnzgbnigcbzygcfvscbzgdagzygvpnzvbpnmaiingbinmyixpyfxnioyifcxznvzgbpnvpyibhiydicqbpnoinnvscbzgdcgxbpnmyqrzgnxbybcfagxnibpnzvaeaxdzgdvkvbnqvpnzvcfvybpnozivbonqcfnvscbnibyvaihcvvbpnbjypaxincxhyzgbqcisagxnibpnzvaeaxdzgdvkvbnqvpnpcvgnunirnnghfcmnxyoobpnhyxzaqzgpningbzinmcinni
+이곳에서 빈도 분석을 자동으로 할 수 있다.
+kim yuna is a south korean figure skater she is the olympic champion in ladies singles the world champion the four continents champion a three time grand prix final champion the world junior champion the junior grand prix final champion and a four time south korean national champion kim is the first south korean figure skater to win a medal at an isu junior or senior grand prix event is u championship and the olympic games she is the first female skater to win the olympic games the world championships the four continents championships and the grand prix finals he is one of the most highly recognized athletes and media figures in south korea as of april this year she is ranked second in the world by the international skating union she is the current record holder for ladies in the short program the free skating and the combined total under the isu judging systems he is also the first female skater to surpass the two hu dread point mark under the isu judging systems he has never been placed off the podium in her entire career</description>
+    </item>
+    
+    <item>
+      <title>SuNiNaTaS 21 Solution</title>
+      <link>https://devleo.wtf/posts/suninatas-21/</link>
+      <pubDate>Tue, 25 Jan 2022 21:30:43 +0900</pubDate>
+      
+      <guid>https://devleo.wtf/posts/suninatas-21/</guid>
+      <description>문제 풀이 요약  헥스값 분석, 숨겨진 사진 파일 추출 추출된 여러 파일을 이용해 답 유추  문제 풀이 위의 이미지가 주어진다.
+JPG header인 FF D8이 여러 번 검색되는 것을 보아, 문제에서 주어진 이미지의 footer 밑에 또 다른 JPG 파일들이 숨어있다는 것을 추측할 수 있다. binwalk로 추출해보자.
+binwalk --dd=&#39;.*&#39; monitor.jpeg
+여러 개의 파일이 추출되었다.
+플래그의 일부가 공개되어 있는 사진 여러 장을 확인하며 조합하면 플래그가 된다.
+ FLAG: H4CC3R_IN_TH3_MIDD33_4TT4CK
+ </description>
+    </item>
+    
+    <item>
+      <title>SuNiNaTaS 19 Solution</title>
+      <link>https://devleo.wtf/posts/suninatas-19/</link>
+      <pubDate>Tue, 25 Jan 2022 21:25:00 +0900</pubDate>
+      
+      <guid>https://devleo.wtf/posts/suninatas-19/</guid>
+      <description>문제 풀이 요약  주어진 문자열을 bin to string caesar cipher  문제 풀이 0100111001010110010000110101010001000110010001000101 0110001000000100101101000110001000000100101001001100 0100010101011010010001010101001001001011010100100100 1010001000000101001001000101010101010010000001001011 0100011001010101010100100101000000100000010110100100 1010001000000101001000100000010110000100011001000110 0101010100100000010101010101001001010000001000000101 0010010001010101010100100000010100100100110001001011 0101100101000010010101100101000000100000010110100100 1010001000000100011101000011010100100101101001010101 0101010001001011010101110101101001001010010011010101 0110010010010101000001011001010100100100100101010101
+이곳에서 bin to str 한다.
+그러면 NVCTFDV KF JLEZERKRJ REU KFURP ZJ R XFFU URP REU RLKYBVP ZJ GCRZUTKWZJMVIPYRIU 이런 문자열이 나오는데, caesar cipher key=9로 하면 key를 구할 수 있다.
+WELCOME TO SUNINATAS AND TODAY IS A GOOD DAY AND AUTHKEY IS PLAIDCTFISVERYHARD
+ FLAG: PLAIDCTFISVERYHARD</description>
+    </item>
+    
+    <item>
+      <title>SuNiNaTaS 18 Solution</title>
+      <link>https://devleo.wtf/posts/suninatas-18/</link>
+      <pubDate>Tue, 25 Jan 2022 21:06:14 +0900</pubDate>
+      
+      <guid>https://devleo.wtf/posts/suninatas-18/</guid>
+      <description>문제 풀이 요약  주어진 문자열을 ascii code에서 문자열로 변경 base64 decode  문제 풀이 86 71 57 107 89 88 107 103 97 88 77 103 89 83 66 110 98 50 57 107 73 71 82 104 101 83 52 103 86 71 104 108 73 69 70 49 100 71 104 76 90 88 107 103 97 88 77 103 86 109 86 121 101 86 90 108 99 110 108 85 98 50 53 110 86 71 57 117 90 48 100 49 99 109 107 104</description>
+    </item>
+    
+    <item>
+      <title>SuNiNaTaS 15 Solution</title>
+      <link>https://devleo.wtf/posts/suninatas-15/</link>
+      <pubDate>Tue, 25 Jan 2022 21:00:29 +0900</pubDate>
+      
+      <guid>https://devleo.wtf/posts/suninatas-15/</guid>
+      <description>문제 풀이 요약  파일 다운로드 후 메타데이터 조회  문제 풀이 음악 파일이 주어지는데, 이곳에서 metadata를 조회한다.
+ FLAG: GoodJobMetaTagSearch
+ </description>
+    </item>
+    
+    <item>
+      <title>SuNiNaTaS 14 Solution</title>
+      <link>https://devleo.wtf/posts/suninatas-14/</link>
+      <pubDate>Tue, 25 Jan 2022 20:17:29 +0900</pubDate>
+      
+      <guid>https://devleo.wtf/posts/suninatas-14/</guid>
+      <description>문제 풀이 요약  패스워드를 크랙할 계정 발견 john the ripper로 리눅스 비밀번호값 크랙킹  문제 풀이 압축을 풀면 passwd, shadow 파일이 나온다. 이 파일은 실제 리눅스 시스템에서 각각 /etc/passwd, /etc/shadow 에 해당하고, passwd 에는 사용자 계정 정보가, shadow 에는 해당 사용자의 비밀번호를 암호화한 값이 저장되어 있다.
+root:x:0:0:root:/root:/bin/bash daemon:x:1:1:daemon:/usr/sbin:/bin/sh bin:x:2:2:bin:/bin:/bin/sh sys:x:3:3:sys:/dev:/bin/sh sync:x:4:65534:sync:/bin:/bin/sync games:x:5:60:games:/usr/games:/bin/sh man:x:6:12:man:/var/cache/man:/bin/sh lp:x:7:7:lp:/var/spool/lpd:/bin/sh mail:x:8:8:mail:/var/mail:/bin/sh news:x:9:9:news:/var/spool/news:/bin/sh uucp:x:10:10:uucp:/var/spool/uucp:/bin/sh proxy:x:13:13:proxy:/bin:/bin/sh www-data:x:33:33:www-data:/var/www:/bin/sh backup:x:34:34:backup:/var/backups:/bin/sh list:x:38:38:Mailing List Manager:/var/list:/bin/sh irc:x:39:39:ircd:/var/run/ircd:/bin/sh gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/bin/sh libuuid:x:100:101::/var/lib/libuuid:/bin/sh syslog:x:101:103::/home/syslog:/bin/false sshd:x:102:65534::/var/run/sshd:/usr/sbin/nologin landscape:x:103:108::/var/lib/landscape:/bin/false messagebus:x:104:112::/var/run/dbus:/bin/false nobody:x:65534:65534:nobody:/nonexistent:/bin/sh mysql:x:105:113::/var/lib/mysql:/bin/false avahi:x:106:114::/var/run/avahi-daemon:/bin/false snort:x:107:115:Snort IDS:/var/log/snort:/bin/false statd:x:108:65534::/var/lib/nfs:/bin/false usbmux:x:109:46::/home/usbmux:/bin/false pulse:x:110:116::/var/run/pulse:/bin/false rtkit:x:111:117::/proc:/bin/false festival:x:112:29::/home/festival:/bin/false postgres:x:1000:1000::/home/postgres:/bin/sh haldaemon:x:113:122:Hardware abstraction layer,,,:/var/run/hald:/bin/false suninatas:x:1001:1001::/home/suninatas:/bin/sh passwd파일에는 맨 아래에 suninatas유저를 확인할 수 있다.</description>
+    </item>
+    
+  </channel>
+</rss>

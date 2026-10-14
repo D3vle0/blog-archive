@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>Ubuntu IRC Server Setup With Docker - Devleo</title>
+
+  
+  
+  <meta name="description" content="IRC란? Internet Relay Chatting의 약자로, 특정 topic을 가지고 사용자끼리 대화를 할 수 있습니다.
+Installation 먼저 방화벽에서 6667, 6697, 7000, 7001 포트를 열어줍니다.
+iptables -I INPUT 1 -p tcp --dport 6667 -j ACCEPT iptables -I INPUT 1 -p tcp --dport 6697 -j ACCEPT iptables -I INPUT 1 -p tcp --dport 7000 -j ACCEPT iptables -I INPUT 1 -p tcp --dport 7001 -j ACCEPT 또는 서버 방화벽 (보안 그룹) 페이지에서 해당 포트를 열어줄 수 있습니다." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://devleo.wtf/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="https://devleo.wtf/an-old-hope.min.css" />
+  <script
+    defer
+    src="https://devleo.wtf/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="https://devleo.wtf/theme.png" />
+
+  
+  <link rel="preload" as="image" href="https://devleo.wtf/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://devleo.wtf/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://devleo.wtf/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.0" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Ubuntu IRC Server Setup With Docker" />
+<meta property="og:description" content="IRC란? Internet Relay Chatting의 약자로, 특정 topic을 가지고 사용자끼리 대화를 할 수 있습니다.
+Installation 먼저 방화벽에서 6667, 6697, 7000, 7001 포트를 열어줍니다.
+iptables -I INPUT 1 -p tcp --dport 6667 -j ACCEPT iptables -I INPUT 1 -p tcp --dport 6697 -j ACCEPT iptables -I INPUT 1 -p tcp --dport 7000 -j ACCEPT iptables -I INPUT 1 -p tcp --dport 7001 -j ACCEPT 또는 서버 방화벽 (보안 그룹) 페이지에서 해당 포트를 열어줄 수 있습니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://devleo.wtf/posts/irc/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-25T12:46:47+09:00" />
+<meta property="article:modified_time" content="2022-01-25T12:46:47+09:00" />
+
+
+  
+  <meta itemprop="name" content="Ubuntu IRC Server Setup With Docker">
+<meta itemprop="description" content="IRC란? Internet Relay Chatting의 약자로, 특정 topic을 가지고 사용자끼리 대화를 할 수 있습니다.
+Installation 먼저 방화벽에서 6667, 6697, 7000, 7001 포트를 열어줍니다.
+iptables -I INPUT 1 -p tcp --dport 6667 -j ACCEPT iptables -I INPUT 1 -p tcp --dport 6697 -j ACCEPT iptables -I INPUT 1 -p tcp --dport 7000 -j ACCEPT iptables -I INPUT 1 -p tcp --dport 7001 -j ACCEPT 또는 서버 방화벽 (보안 그룹) 페이지에서 해당 포트를 열어줄 수 있습니다."><meta itemprop="datePublished" content="2022-01-25T12:46:47+09:00" />
+<meta itemprop="dateModified" content="2022-01-25T12:46:47+09:00" />
+<meta itemprop="wordCount" content="347">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ubuntu IRC Server Setup With Docker"/>
+<meta name="twitter:description" content="IRC란? Internet Relay Chatting의 약자로, 특정 topic을 가지고 사용자끼리 대화를 할 수 있습니다.
+Installation 먼저 방화벽에서 6667, 6697, 7000, 7001 포트를 열어줍니다.
+iptables -I INPUT 1 -p tcp --dport 6667 -j ACCEPT iptables -I INPUT 1 -p tcp --dport 6697 -j ACCEPT iptables -I INPUT 1 -p tcp --dport 7000 -j ACCEPT iptables -I INPUT 1 -p tcp --dport 7001 -j ACCEPT 또는 서버 방화벽 (보안 그룹) 페이지에서 해당 포트를 열어줄 수 있습니다."/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="true">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="https://devleo.wtf/">Devleo</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+  <nav class="menu">
+    
+    <a class="" href="/about/">About</a>
+    
+  </nav>
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/d3vle0"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      <time>Jan 25, 2022</time>
+      
+    </p>
+    <h1>Ubuntu IRC Server Setup With Docker</h1>
+  </header>
+  <section class="post-content"><h2 id="irc란">IRC란?</h2>
+<p>Internet Relay Chatting의 약자로, 특정 topic을 가지고 사용자끼리 대화를 할 수 있습니다.</p>
+<h2 id="installation">Installation</h2>
+<p>먼저 방화벽에서 6667, 6697, 7000, 7001 포트를 열어줍니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">iptables -I INPUT <span style="color:#ae81ff">1</span> -p tcp --dport <span style="color:#ae81ff">6667</span> -j ACCEPT
+iptables -I INPUT <span style="color:#ae81ff">1</span> -p tcp --dport <span style="color:#ae81ff">6697</span> -j ACCEPT
+iptables -I INPUT <span style="color:#ae81ff">1</span> -p tcp --dport <span style="color:#ae81ff">7000</span> -j ACCEPT
+iptables -I INPUT <span style="color:#ae81ff">1</span> -p tcp --dport <span style="color:#ae81ff">7001</span> -j ACCEPT
+</code></pre></div><p>또는 서버 방화벽 (보안 그룹) 페이지에서 해당 포트를 열어줄 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install docker
+sudo apt install certbot
+sudo apt install screen
+</code></pre></div><p>도커, 인증서 발급 패키지, 백그라운드 실행 패키지를 설치합니다.</p>
+<h2 id="인증서-발급">인증서 발급</h2>
+<p>IRC 서버를 운영하기 위해서는 인증서가 필요합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo certbot certonly --standalone -d &lt;domain&gt;
+</code></pre></div><h2 id="도커-세팅">도커 세팅</h2>
+<p>이제 도커를 이용해서 서비스를 시작해봅시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir irc
+cd irc
+touch docker-compose.yml
+mkdir config
+</code></pre></div><p><code>docker-compose.yml</code> 을 아래와 같이 작성합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3.5&#34;</span>
+<span style="color:#f92672">services</span>:
+    <span style="color:#f92672">irc</span>:
+        <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">irc_server</span>
+        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">inspircd/inspircd-docker:2.0.27</span>
+        <span style="color:#f92672">ports</span>:
+            - <span style="color:#e6db74">&#34;6667:6667&#34;</span>
+            - <span style="color:#e6db74">&#34;6697:6697&#34;</span>
+        <span style="color:#f92672">environment</span>:
+            - <span style="color:#ae81ff">INSP_NET_SUFFIX=.irc.your.domain.com</span>
+            - <span style="color:#ae81ff">INSP_ADMIN_NAME=</span>
+            - <span style="color:#ae81ff">INSP_ADMIN_NICK=</span>
+            - <span style="color:#ae81ff">INSP_ADMIN_EMAIL=</span>
+        <span style="color:#f92672">volumes</span>:
+            - <span style="color:#ae81ff">./config:/inspircd/conf/</span>
+</code></pre></div><h2 id="인증서-적용">인증서 적용</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo cp /etc/letsencrypt/live/&lt;도메인&gt;/fullchain.pem ./config/cert.pem
+sudo cp /etc/letsencrypt/live/&lt;도메인&gt;/privkey.pem ./config/key.pem
+sudo chown <span style="color:#ae81ff">10000</span> ./config/ -R
+</code></pre></div><h2 id="서비스-시작">서비스 시작</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">screen -S irc
+docker-compose up
+</code></pre></div><p><code>Ctrl + A, D</code> 를 눌러서 screen 에서 나온다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">screen -r
+</code></pre></div><p>screen 에 들어갈 때는 위의 명령을 사용하면 된다.</p>
+<h2 id="서버-접속-방법">서버 접속 방법</h2>
+<p>irc 클라이언트 중 하나인 irssi 를 사용하겠습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install irssi
+irssi
+</code></pre></div><p>irssi 가 실행이 되면 자신의 서버에 접속할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/connect -tls &lt;도메인&gt; <span style="color:#ae81ff">6697</span>
+/join &lt;채널&gt;
+</code></pre></div><p>일일이 접속할 때 마다 위의 명령을 쳐야하기 때문에 zshrc 에 등록해줘도 됩니다.
+아래의 명령어를 <code>~/.zshrc</code> 파일 끝에 추가합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias irc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;irssi -c &lt;도메인&gt; -n &lt;닉네임&gt;&#39;</span>
+</code></pre></div><h2 id="motd-변경">motd 변경</h2>
+<p>MOTD 란 Message Of The Day 의 약자로 IRC 서버에 접속할 때 보여주는 문자열입니다.
+주로 서버 소개, 규칙 등을 적어놓습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">screen -r
+cd config
+</code></pre></div><p>이후 <code>docker.motd</code> 파일을 수정해서 사용하면 됩니다.</p>
+<pre tabindex="0"><code class="language-motd" data-lang="motd">                        _        _
+ ___  ___  ___ _ __ ___| |_     (_)_ __ ___
+/ __|/ _ \/ __| '__/ _ \ __|____| | '__/ __|
+\__ \  __/ (__| | |  __/ ||_____| | | | (__
+|___/\___|\___|_|  \___|\__|    |_|_|  \___|
+
+
+
+👋 환영합니다!
+
+이곳은 Devleo 가 운영하는 비밀 IRC 서버입니다.
+
+가볍고 빠른 성능의 IRC 서버에서 쾌적한 채팅을 경험하세요!
+
+채팅 채널을 소개합니다.
+
+#general: 잡담
+#develop: 개발 관련
+#hacking: 해킹 관련
+</code></pre></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+    
+    <a class="prev" href="https://devleo.wtf/posts/suninatas-14/"><span>←</span><span>SuNiNaTaS 14 Solution</span></a>
+     
+    <a class="next" href="https://devleo.wtf/posts/homeserver/"><span>Arch Linux Home Server Setup</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+  <div id="disqus_thread" class="post-comments"></div>
+  <script>
+    var disqusShortname = 'b-dv-p';
+    var script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2022 <a href="https://devleo.wtf/">Devleo</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>

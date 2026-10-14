@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>SuNiNaTaS 32 Solution - Devleo</title>
+
+  
+  
+  <meta name="description" content="문제 풀이 요약  USB 파일 시스템 복구 파일 데이터 확인  문제 풀이 제시 문제 경찰청으로 부터 연쇄 테러 용의자로 부터 압수한 USB 이미지 분석을 의뢰 받았다. 최초 분석을 신입 직원에게 맡겼으나 Hex Editor로 여기 저기 둘러 보다 실수로 특정 부분이 손상되고 이미지가 인식되지 않는다.
+당신은 포렌식 전문가의 자존심을 걸고 이미지를 살려 내고 다음 테러를 예방하는데 기여를 해야 한다.
+ 다음 테러 계획이 들어있는 문서의 수정 일시는? (UTC&#43;9) 다음 테러 장소는?" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://devleo.wtf/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="https://devleo.wtf/an-old-hope.min.css" />
+  <script
+    defer
+    src="https://devleo.wtf/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="https://devleo.wtf/theme.png" />
+
+  
+  <link rel="preload" as="image" href="https://devleo.wtf/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://devleo.wtf/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://devleo.wtf/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.0" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="SuNiNaTaS 32 Solution" />
+<meta property="og:description" content="문제 풀이 요약  USB 파일 시스템 복구 파일 데이터 확인  문제 풀이 제시 문제 경찰청으로 부터 연쇄 테러 용의자로 부터 압수한 USB 이미지 분석을 의뢰 받았다. 최초 분석을 신입 직원에게 맡겼으나 Hex Editor로 여기 저기 둘러 보다 실수로 특정 부분이 손상되고 이미지가 인식되지 않는다.
+당신은 포렌식 전문가의 자존심을 걸고 이미지를 살려 내고 다음 테러를 예방하는데 기여를 해야 한다.
+ 다음 테러 계획이 들어있는 문서의 수정 일시는? (UTC&#43;9) 다음 테러 장소는?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://devleo.wtf/posts/suninatas-32/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-26T21:04:28+09:00" />
+<meta property="article:modified_time" content="2022-01-26T21:04:28+09:00" />
+
+
+  
+  <meta itemprop="name" content="SuNiNaTaS 32 Solution">
+<meta itemprop="description" content="문제 풀이 요약  USB 파일 시스템 복구 파일 데이터 확인  문제 풀이 제시 문제 경찰청으로 부터 연쇄 테러 용의자로 부터 압수한 USB 이미지 분석을 의뢰 받았다. 최초 분석을 신입 직원에게 맡겼으나 Hex Editor로 여기 저기 둘러 보다 실수로 특정 부분이 손상되고 이미지가 인식되지 않는다.
+당신은 포렌식 전문가의 자존심을 걸고 이미지를 살려 내고 다음 테러를 예방하는데 기여를 해야 한다.
+ 다음 테러 계획이 들어있는 문서의 수정 일시는? (UTC&#43;9) 다음 테러 장소는?"><meta itemprop="datePublished" content="2022-01-26T21:04:28+09:00" />
+<meta itemprop="dateModified" content="2022-01-26T21:04:28+09:00" />
+<meta itemprop="wordCount" content="227">
+<meta itemprop="keywords" content="hacking,suninatas," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SuNiNaTaS 32 Solution"/>
+<meta name="twitter:description" content="문제 풀이 요약  USB 파일 시스템 복구 파일 데이터 확인  문제 풀이 제시 문제 경찰청으로 부터 연쇄 테러 용의자로 부터 압수한 USB 이미지 분석을 의뢰 받았다. 최초 분석을 신입 직원에게 맡겼으나 Hex Editor로 여기 저기 둘러 보다 실수로 특정 부분이 손상되고 이미지가 인식되지 않는다.
+당신은 포렌식 전문가의 자존심을 걸고 이미지를 살려 내고 다음 테러를 예방하는데 기여를 해야 한다.
+ 다음 테러 계획이 들어있는 문서의 수정 일시는? (UTC&#43;9) 다음 테러 장소는?"/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="true">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="https://devleo.wtf/">Devleo</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+  <nav class="menu">
+    
+    <a class="" href="/about/">About</a>
+    
+  </nav>
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/d3vle0"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      <time>Jan 26, 2022</time>
+      
+    </p>
+    <h1>SuNiNaTaS 32 Solution</h1>
+  </header>
+  <section class="post-content"><h2 id="문제-풀이-요약">문제 풀이 요약</h2>
+<ol>
+<li>USB 파일 시스템 복구</li>
+<li>파일 데이터 확인</li>
+</ol>
+<h2 id="문제-풀이">문제 풀이</h2>
+<h3 id="제시-문제">제시 문제</h3>
+<p>경찰청으로 부터 연쇄 테러 용의자로 부터 압수한 USB 이미지 분석을 의뢰 받았다.
+최초 분석을 신입 직원에게 맡겼으나 Hex Editor로 여기 저기 둘러 보다 실수로 특정 부분이 손상되고 이미지가 인식되지 않는다.</p>
+<p>당신은 포렌식 전문가의 자존심을 걸고 이미지를 살려 내고 다음 테러를 예방하는데 기여를 해야 한다.</p>
+<ol>
+<li>다음 테러 계획이 들어있는 문서의 수정 일시는? (UTC+9)</li>
+<li>다음 테러 장소는?</li>
+</ol>
+<p>인증키 형식 : lowercase(MD5(YYYY-MM-DD_HH:MM:SS_장소)</p>
+<p>예) lowercase(MD5(2016-03-28_13:00:00_Pink Lake)</p>
+<h3 id="usb-파일-시스템-복구">USB 파일 시스템 복구</h3>
+<p>문제 설명을 보면 USB 이미지 특정 부분이 손상되었다고 한다. 먼저 <code>hex fiend</code>로 헥스값을 확인해본다.</p>
+<p><img src="/suninatas-32/1.png" alt="img"></p>
+<p>FAT32 시스템의 boot sector 임을 확인할 수 있는데, 시그니처인 <code>55 AA</code>가 앞으로 많이 나와있는 모습이다. sector 하나의 크기는 512byte 이기 때문에 <code>55 AA</code>가 <code>0x1fe</code> 자리에 있어야 한다. 따라서 null 값을 임의로 삽입해주자.</p>
+<p><img src="/suninatas-32/2.png" alt="img"></p>
+<p>이미지가 복구되었고, 이제 FTK Imager를 통해 분석한다.</p>
+<p><img src="/suninatas-32/3.png" alt="img"></p>
+<p>테러 계획이 담긴 문서를 확인할 수 있다. 수정 날짜는 2016년 5월 30일 02:44:02 인데 UTC+9 형식에 맞추면 11:44:02가 된다.</p>
+<p><img src="/suninatas-32/4.png" alt="img"></p>
+<p>맥 finder에서는 수정일의 초 단위를 확인할 수 없으니 <code>stat</code> 명령을 활용한다.</p>
+<pre tabindex="0"><code>➜  [root] stat -x 2차\ 테러\ 계획.hwp
+  File: &quot;2차 테러 계획.hwp&quot;
+  Size: 9728         FileType: Regular File
+  Mode: (0644/-rw-r--r--)
+  Uid: (  501/  devleo)
+  Gid: (   20/   staff)
+Device: 1,16
+ Inode: 3488864
+ Links: 1
+Access: Wed Jan 26 20:53:55 2022
+Modify: Mon May 30 11:44:02 2016
+Change: Wed Jan 26 20:54:28 2022
+</code></pre><p>11:44:02 인 것을 확실하게 확인했다.</p>
+<p><img src="/suninatas-32/5.png" alt="img"></p>
+<p>테러 장소는 <code>Rose Park</code>이다.</p>
+<blockquote>
+<p>FLAG: md5(2016-05-30_11:44:02_Rose Park) = <code>8ce84f2f0568e3c70665167d44e53c2a</code></p>
+</blockquote>
+</section>
+
+  
+  
+  <footer class="post-tags">
+     
+    <a href="https://devleo.wtf/tags/hacking">hacking</a>
+     
+    <a href="https://devleo.wtf/tags/suninatas">suninatas</a>
+    
+  </footer>
+  
+
+  
+  
+  
+  <nav class="post-nav">
+    
+    <a class="prev" href="https://devleo.wtf/posts/ctfd-remove-default-banner/"><span>←</span><span>CTFd Remove Default Banner</span></a>
+     
+    <a class="next" href="https://devleo.wtf/posts/suninatas-29/"><span>SuNiNaTaS 29 Solution</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+  <div id="disqus_thread" class="post-comments"></div>
+  <script>
+    var disqusShortname = 'b-dv-p';
+    var script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2022 <a href="https://devleo.wtf/">Devleo</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>

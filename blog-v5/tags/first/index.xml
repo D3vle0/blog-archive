@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>first on Devleo</title>
+    <link>https://devleo.wtf/tags/first/</link>
+    <description>Recent content in first on Devleo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>© 2022 Devleo</copyright>
+    <lastBuildDate>Sat, 22 Jan 2022 14:03:24 +0900</lastBuildDate><atom:link href="https://devleo.wtf/tags/first/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First post in my new blog</title>
+      <link>https://devleo.wtf/posts/first-new/</link>
+      <pubDate>Sat, 22 Jan 2022 14:03:24 +0900</pubDate>
+      
+      <guid>https://devleo.wtf/posts/first-new/</guid>
+      <description>I used to manage my blog since last July using hugo static site generator.
+But after recovering my Macbook Air through DFU mode, I had to lost all of my data include my projects, some system tweaks and even original hugo blog data.
+My original hugo theme was &amp;ldquo;LoveIt&amp;rdquo; and it has a lot of features for developer such as line number in code block, content shortcut buttons, and perfect shortcodes.</description>
+    </item>
+    
+  </channel>
+</rss>

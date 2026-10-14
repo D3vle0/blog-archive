@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>SuNiNaTaS 26 Solution - Devleo</title>
+
+  
+  
+  <meta name="description" content="문제 풀이 요약 빈도 분석
+문제 풀이 szqkagczvcvyabpsyincgozdainvscbnivpnzvbpnyfkqhzmmpcqhzygzgfcxznvvzgdfnvbpnjyifxmpcqhzygbpnoyaimygbzgngbvmpcqhzygcbpinnbzqndicgxhiztozgcfmpcqhzygbpnjyifxeagzyimpcqhzygbpneagzyidicgxhiztozgcfmpcqhzygcgxcoyaibzqnvyabpsyincggcbzygcfmpcqhzygszqzvbpnozivbvyabpsyincgozdainvscbnibyjzgcqnxcfcbcgzvaeagzyiyivngzyidicgxhiztnungbzvampcqhzygvpzhcgxbpnyfkqhzmdcqnvvpnzvbpnozivbonqcfnvscbnibyjzgbpnyfkqhzmdcqnvbpnjyifxmpcqhzygvpzhvbpnoyaimygbzgngbvmpcqhzygvpzhvcgxbpndicgxhiztozgcfvpnzvygnyobpnqyvbpzdpfkinmydgzlnxcbpfnbnvcgxqnxzcozdainvzgvyabpsyinccvyochizfbpzvkncivpnzvicgsnxvnmygxzgbpnjyifxrkbpnzgbnigcbzygcfvscbzgdagzygvpnzvbpnmaiingbinmyixpyfxnioyifcxznvzgbpnvpyibhiydicqbpnoinnvscbzgdcgxbpnmyqrzgnxbybcfagxnibpnzvaeaxdzgdvkvbnqvpnzvcfvybpnozivbonqcfnvscbnibyvaihcvvbpnbjypaxincxhyzgbqcisagxnibpnzvaeaxdzgdvkvbnqvpnpcvgnunirnnghfcmnxyoobpnhyxzaqzgpningbzinmcinni
+이곳에서 빈도 분석을 자동으로 할 수 있다.
+kim yuna is a south korean figure skater she is the olympic champion in ladies singles the world champion the four continents champion a three time grand prix final champion the world junior champion the junior grand prix final champion and a four time south korean national champion kim is the first south korean figure skater to win a medal at an isu junior or senior grand prix event is u championship and the olympic games she is the first female skater to win the olympic games the world championships the four continents championships and the grand prix finals he is one of the most highly recognized athletes and media figures in south korea as of april this year she is ranked second in the world by the international skating union she is the current record holder for ladies in the short program the free skating and the combined total under the isu judging systems he is also the first female skater to surpass the two hu dread point mark under the isu judging systems he has never been placed off the podium in her entire career" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://devleo.wtf/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="https://devleo.wtf/an-old-hope.min.css" />
+  <script
+    defer
+    src="https://devleo.wtf/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="https://devleo.wtf/theme.png" />
+
+  
+  <link rel="preload" as="image" href="https://devleo.wtf/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://devleo.wtf/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://devleo.wtf/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.0" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="SuNiNaTaS 26 Solution" />
+<meta property="og:description" content="문제 풀이 요약 빈도 분석
+문제 풀이 szqkagczvcvyabpsyincgozdainvscbnivpnzvbpnyfkqhzmmpcqhzygzgfcxznvvzgdfnvbpnjyifxmpcqhzygbpnoyaimygbzgngbvmpcqhzygcbpinnbzqndicgxhiztozgcfmpcqhzygbpnjyifxeagzyimpcqhzygbpneagzyidicgxhiztozgcfmpcqhzygcgxcoyaibzqnvyabpsyincggcbzygcfmpcqhzygszqzvbpnozivbvyabpsyincgozdainvscbnibyjzgcqnxcfcbcgzvaeagzyiyivngzyidicgxhiztnungbzvampcqhzygvpzhcgxbpnyfkqhzmdcqnvvpnzvbpnozivbonqcfnvscbnibyjzgbpnyfkqhzmdcqnvbpnjyifxmpcqhzygvpzhvbpnoyaimygbzgngbvmpcqhzygvpzhvcgxbpndicgxhiztozgcfvpnzvygnyobpnqyvbpzdpfkinmydgzlnxcbpfnbnvcgxqnxzcozdainvzgvyabpsyinccvyochizfbpzvkncivpnzvicgsnxvnmygxzgbpnjyifxrkbpnzgbnigcbzygcfvscbzgdagzygvpnzvbpnmaiingbinmyixpyfxnioyifcxznvzgbpnvpyibhiydicqbpnoinnvscbzgdcgxbpnmyqrzgnxbybcfagxnibpnzvaeaxdzgdvkvbnqvpnzvcfvybpnozivbonqcfnvscbnibyvaihcvvbpnbjypaxincxhyzgbqcisagxnibpnzvaeaxdzgdvkvbnqvpnpcvgnunirnnghfcmnxyoobpnhyxzaqzgpningbzinmcinni
+이곳에서 빈도 분석을 자동으로 할 수 있다.
+kim yuna is a south korean figure skater she is the olympic champion in ladies singles the world champion the four continents champion a three time grand prix final champion the world junior champion the junior grand prix final champion and a four time south korean national champion kim is the first south korean figure skater to win a medal at an isu junior or senior grand prix event is u championship and the olympic games she is the first female skater to win the olympic games the world championships the four continents championships and the grand prix finals he is one of the most highly recognized athletes and media figures in south korea as of april this year she is ranked second in the world by the international skating union she is the current record holder for ladies in the short program the free skating and the combined total under the isu judging systems he is also the first female skater to surpass the two hu dread point mark under the isu judging systems he has never been placed off the podium in her entire career" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://devleo.wtf/posts/suninatas-26/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-25T21:55:09+09:00" />
+<meta property="article:modified_time" content="2022-01-25T21:55:09+09:00" />
+
+
+  
+  <meta itemprop="name" content="SuNiNaTaS 26 Solution">
+<meta itemprop="description" content="문제 풀이 요약 빈도 분석
+문제 풀이 szqkagczvcvyabpsyincgozdainvscbnivpnzvbpnyfkqhzmmpcqhzygzgfcxznvvzgdfnvbpnjyifxmpcqhzygbpnoyaimygbzgngbvmpcqhzygcbpinnbzqndicgxhiztozgcfmpcqhzygbpnjyifxeagzyimpcqhzygbpneagzyidicgxhiztozgcfmpcqhzygcgxcoyaibzqnvyabpsyincggcbzygcfmpcqhzygszqzvbpnozivbvyabpsyincgozdainvscbnibyjzgcqnxcfcbcgzvaeagzyiyivngzyidicgxhiztnungbzvampcqhzygvpzhcgxbpnyfkqhzmdcqnvvpnzvbpnozivbonqcfnvscbnibyjzgbpnyfkqhzmdcqnvbpnjyifxmpcqhzygvpzhvbpnoyaimygbzgngbvmpcqhzygvpzhvcgxbpndicgxhiztozgcfvpnzvygnyobpnqyvbpzdpfkinmydgzlnxcbpfnbnvcgxqnxzcozdainvzgvyabpsyinccvyochizfbpzvkncivpnzvicgsnxvnmygxzgbpnjyifxrkbpnzgbnigcbzygcfvscbzgdagzygvpnzvbpnmaiingbinmyixpyfxnioyifcxznvzgbpnvpyibhiydicqbpnoinnvscbzgdcgxbpnmyqrzgnxbybcfagxnibpnzvaeaxdzgdvkvbnqvpnzvcfvybpnozivbonqcfnvscbnibyvaihcvvbpnbjypaxincxhyzgbqcisagxnibpnzvaeaxdzgdvkvbnqvpnpcvgnunirnnghfcmnxyoobpnhyxzaqzgpningbzinmcinni
+이곳에서 빈도 분석을 자동으로 할 수 있다.
+kim yuna is a south korean figure skater she is the olympic champion in ladies singles the world champion the four continents champion a three time grand prix final champion the world junior champion the junior grand prix final champion and a four time south korean national champion kim is the first south korean figure skater to win a medal at an isu junior or senior grand prix event is u championship and the olympic games she is the first female skater to win the olympic games the world championships the four continents championships and the grand prix finals he is one of the most highly recognized athletes and media figures in south korea as of april this year she is ranked second in the world by the international skating union she is the current record holder for ladies in the short program the free skating and the combined total under the isu judging systems he is also the first female skater to surpass the two hu dread point mark under the isu judging systems he has never been placed off the podium in her entire career"><meta itemprop="datePublished" content="2022-01-25T21:55:09+09:00" />
+<meta itemprop="dateModified" content="2022-01-25T21:55:09+09:00" />
+<meta itemprop="wordCount" content="204">
+<meta itemprop="keywords" content="hacking,suninatas," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SuNiNaTaS 26 Solution"/>
+<meta name="twitter:description" content="문제 풀이 요약 빈도 분석
+문제 풀이 szqkagczvcvyabpsyincgozdainvscbnivpnzvbpnyfkqhzmmpcqhzygzgfcxznvvzgdfnvbpnjyifxmpcqhzygbpnoyaimygbzgngbvmpcqhzygcbpinnbzqndicgxhiztozgcfmpcqhzygbpnjyifxeagzyimpcqhzygbpneagzyidicgxhiztozgcfmpcqhzygcgxcoyaibzqnvyabpsyincggcbzygcfmpcqhzygszqzvbpnozivbvyabpsyincgozdainvscbnibyjzgcqnxcfcbcgzvaeagzyiyivngzyidicgxhiztnungbzvampcqhzygvpzhcgxbpnyfkqhzmdcqnvvpnzvbpnozivbonqcfnvscbnibyjzgbpnyfkqhzmdcqnvbpnjyifxmpcqhzygvpzhvbpnoyaimygbzgngbvmpcqhzygvpzhvcgxbpndicgxhiztozgcfvpnzvygnyobpnqyvbpzdpfkinmydgzlnxcbpfnbnvcgxqnxzcozdainvzgvyabpsyinccvyochizfbpzvkncivpnzvicgsnxvnmygxzgbpnjyifxrkbpnzgbnigcbzygcfvscbzgdagzygvpnzvbpnmaiingbinmyixpyfxnioyifcxznvzgbpnvpyibhiydicqbpnoinnvscbzgdcgxbpnmyqrzgnxbybcfagxnibpnzvaeaxdzgdvkvbnqvpnzvcfvybpnozivbonqcfnvscbnibyvaihcvvbpnbjypaxincxhyzgbqcisagxnibpnzvaeaxdzgdvkvbnqvpnpcvgnunirnnghfcmnxyoobpnhyxzaqzgpningbzinmcinni
+이곳에서 빈도 분석을 자동으로 할 수 있다.
+kim yuna is a south korean figure skater she is the olympic champion in ladies singles the world champion the four continents champion a three time grand prix final champion the world junior champion the junior grand prix final champion and a four time south korean national champion kim is the first south korean figure skater to win a medal at an isu junior or senior grand prix event is u championship and the olympic games she is the first female skater to win the olympic games the world championships the four continents championships and the grand prix finals he is one of the most highly recognized athletes and media figures in south korea as of april this year she is ranked second in the world by the international skating union she is the current record holder for ladies in the short program the free skating and the combined total under the isu judging systems he is also the first female skater to surpass the two hu dread point mark under the isu judging systems he has never been placed off the podium in her entire career"/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="true">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="https://devleo.wtf/">Devleo</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+  <nav class="menu">
+    
+    <a class="" href="/about/">About</a>
+    
+  </nav>
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/d3vle0"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      <time>Jan 25, 2022</time>
+      
+    </p>
+    <h1>SuNiNaTaS 26 Solution</h1>
+  </header>
+  <section class="post-content"><h2 id="문제-풀이-요약">문제 풀이 요약</h2>
+<p>빈도 분석</p>
+<h2 id="문제-풀이">문제 풀이</h2>
+<p><code>szqkagczvcvyabpsyincgozdainvscbnivpnzvbpnyfkqhzmmpcqhzygzgfcxznvvzgdfnvbpnjyifxmpcqhzygbpnoyaimygbzgngbvmpcqhzygcbpinnbzqndicgxhiztozgcfmpcqhzygbpnjyifxeagzyimpcqhzygbpneagzyidicgxhiztozgcfmpcqhzygcgxcoyaibzqnvyabpsyincggcbzygcfmpcqhzygszqzvbpnozivbvyabpsyincgozdainvscbnibyjzgcqnxcfcbcgzvaeagzyiyivngzyidicgxhiztnungbzvampcqhzygvpzhcgxbpnyfkqhzmdcqnvvpnzvbpnozivbonqcfnvscbnibyjzgbpnyfkqhzmdcqnvbpnjyifxmpcqhzygvpzhvbpnoyaimygbzgngbvmpcqhzygvpzhvcgxbpndicgxhiztozgcfvpnzvygnyobpnqyvbpzdpfkinmydgzlnxcbpfnbnvcgxqnxzcozdainvzgvyabpsyinccvyochizfbpzvkncivpnzvicgsnxvnmygxzgbpnjyifxrkbpnzgbnigcbzygcfvscbzgdagzygvpnzvbpnmaiingbinmyixpyfxnioyifcxznvzgbpnvpyibhiydicqbpnoinnvscbzgdcgxbpnmyqrzgnxbybcfagxnibpnzvaeaxdzgdvkvbnqvpnzvcfvybpnozivbonqcfnvscbnibyvaihcvvbpnbjypaxincxhyzgbqcisagxnibpnzvaeaxdzgdvkvbnqvpnpcvgnunirnnghfcmnxyoobpnhyxzaqzgpningbzinmcinni</code></p>
+<p><a href="https://quipqiup.com/">이곳에서 빈도 분석을 자동으로 할 수 있다.</a></p>
+<p><code>kim yuna is a south korean figure skater she is the olympic champion in ladies singles the world champion the four continents champion a three time grand prix final champion the world junior champion the junior grand prix final champion and a four time south korean national champion kim is the first south korean figure skater to win a medal at an isu junior or senior grand prix event is u championship and the olympic games she is the first female skater to win the olympic games the world championships the four continents championships and the grand prix finals he is one of the most highly recognized athletes and media figures in south korea as of april this year she is ranked second in the world by the international skating union she is the current record holder for ladies in the short program the free skating and the combined total under the isu judging systems he is also the first female skater to surpass the two hu dread point mark under the isu judging systems he has never been placed off the podium in her entire career</code></p>
+<blockquote>
+<p>FLAG: <code>kimyuna</code></p>
+</blockquote>
+</section>
+
+  
+  
+  <footer class="post-tags">
+     
+    <a href="https://devleo.wtf/tags/hacking">hacking</a>
+     
+    <a href="https://devleo.wtf/tags/suninatas">suninatas</a>
+    
+  </footer>
+  
+
+  
+  
+  
+  <nav class="post-nav">
+    
+    <a class="prev" href="https://devleo.wtf/posts/suninatas-28/"><span>←</span><span>SuNiNaTaS 28 Solution</span></a>
+     
+    <a class="next" href="https://devleo.wtf/posts/suninatas-21/"><span>SuNiNaTaS 21 Solution</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+  <div id="disqus_thread" class="post-comments"></div>
+  <script>
+    var disqusShortname = 'b-dv-p';
+    var script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2022 <a href="https://devleo.wtf/">Devleo</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>

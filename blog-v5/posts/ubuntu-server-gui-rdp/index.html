@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>Install GUI in Ubuntu Server and Connect with RDP - Devleo</title>
+
+  
+  
+  <meta name="description" content="사용 환경  Ubuntu Server 20.04.3 LTS macOS Monterey 12.1  GUI의 필요성 홈서버에 windows vm을 설치할 일이 생겨 qemu로 설치를 하고, ssh -X 옵션과 xquartz를 통해 맥에서 해당 vm을 띄우는 세팅을 했는데, 안정성이 매우 떨어져 결국 ubuntu server에 gnome gui를 올리고 rdp로 접속하여 vmware를 통해 windows vm을 세팅하는 방향을 선택했다.
+서버에 gui가 돌아간다는게 참 불편하긴 하지만 때로는 cli보다는 gui 환경에서 세팅해야 편한 작업들이 꽤 있기 때문에 이번 기회에 설치를 해보고, 이 글에서는 아래의 순서대로 글을 작성하겠다." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://devleo.wtf/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="https://devleo.wtf/an-old-hope.min.css" />
+  <script
+    defer
+    src="https://devleo.wtf/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="https://devleo.wtf/theme.png" />
+
+  
+  <link rel="preload" as="image" href="https://devleo.wtf/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://devleo.wtf/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://devleo.wtf/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.0" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Install GUI in Ubuntu Server and Connect with RDP" />
+<meta property="og:description" content="사용 환경  Ubuntu Server 20.04.3 LTS macOS Monterey 12.1  GUI의 필요성 홈서버에 windows vm을 설치할 일이 생겨 qemu로 설치를 하고, ssh -X 옵션과 xquartz를 통해 맥에서 해당 vm을 띄우는 세팅을 했는데, 안정성이 매우 떨어져 결국 ubuntu server에 gnome gui를 올리고 rdp로 접속하여 vmware를 통해 windows vm을 세팅하는 방향을 선택했다.
+서버에 gui가 돌아간다는게 참 불편하긴 하지만 때로는 cli보다는 gui 환경에서 세팅해야 편한 작업들이 꽤 있기 때문에 이번 기회에 설치를 해보고, 이 글에서는 아래의 순서대로 글을 작성하겠다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://devleo.wtf/posts/ubuntu-server-gui-rdp/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-11T09:38:38+09:00" />
+<meta property="article:modified_time" content="2022-02-11T09:38:38+09:00" />
+
+
+  
+  <meta itemprop="name" content="Install GUI in Ubuntu Server and Connect with RDP">
+<meta itemprop="description" content="사용 환경  Ubuntu Server 20.04.3 LTS macOS Monterey 12.1  GUI의 필요성 홈서버에 windows vm을 설치할 일이 생겨 qemu로 설치를 하고, ssh -X 옵션과 xquartz를 통해 맥에서 해당 vm을 띄우는 세팅을 했는데, 안정성이 매우 떨어져 결국 ubuntu server에 gnome gui를 올리고 rdp로 접속하여 vmware를 통해 windows vm을 세팅하는 방향을 선택했다.
+서버에 gui가 돌아간다는게 참 불편하긴 하지만 때로는 cli보다는 gui 환경에서 세팅해야 편한 작업들이 꽤 있기 때문에 이번 기회에 설치를 해보고, 이 글에서는 아래의 순서대로 글을 작성하겠다."><meta itemprop="datePublished" content="2022-02-11T09:38:38+09:00" />
+<meta itemprop="dateModified" content="2022-02-11T09:38:38+09:00" />
+<meta itemprop="wordCount" content="240">
+<meta itemprop="keywords" content="linux," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Install GUI in Ubuntu Server and Connect with RDP"/>
+<meta name="twitter:description" content="사용 환경  Ubuntu Server 20.04.3 LTS macOS Monterey 12.1  GUI의 필요성 홈서버에 windows vm을 설치할 일이 생겨 qemu로 설치를 하고, ssh -X 옵션과 xquartz를 통해 맥에서 해당 vm을 띄우는 세팅을 했는데, 안정성이 매우 떨어져 결국 ubuntu server에 gnome gui를 올리고 rdp로 접속하여 vmware를 통해 windows vm을 세팅하는 방향을 선택했다.
+서버에 gui가 돌아간다는게 참 불편하긴 하지만 때로는 cli보다는 gui 환경에서 세팅해야 편한 작업들이 꽤 있기 때문에 이번 기회에 설치를 해보고, 이 글에서는 아래의 순서대로 글을 작성하겠다."/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="true">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="https://devleo.wtf/">Devleo</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+  <nav class="menu">
+    
+    <a class="" href="/about/">About</a>
+    
+  </nav>
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/d3vle0"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      <time>Feb 11, 2022</time>
+      
+    </p>
+    <h1>Install GUI in Ubuntu Server and Connect with RDP</h1>
+  </header>
+  <section class="post-content"><h2 id="사용-환경">사용 환경</h2>
+<ul>
+<li>Ubuntu Server 20.04.3 LTS</li>
+<li>macOS Monterey 12.1</li>
+</ul>
+<h2 id="gui의-필요성">GUI의 필요성</h2>
+<p>홈서버에 windows vm을 설치할 일이 생겨 qemu로 설치를 하고, <code>ssh -X</code> 옵션과 xquartz를 통해 맥에서 해당 vm을 띄우는 세팅을 했는데, 안정성이 매우 떨어져 결국 ubuntu server에 gnome gui를 올리고 rdp로 접속하여 vmware를 통해 windows vm을 세팅하는 방향을 선택했다.</p>
+<p>서버에 gui가 돌아간다는게 참 불편하긴 하지만 때로는 cli보다는 gui 환경에서 세팅해야 편한 작업들이 꽤 있기 때문에 이번 기회에 설치를 해보고, 이 글에서는 아래의 순서대로 글을 작성하겠다.</p>
+<ol>
+<li><code>ubuntu-desktop</code>minimal 설치</li>
+<li><code>runlevel</code>설정</li>
+<li>mac에서 rdp를 사용하여 접속</li>
+</ol>
+<h2 id="ubuntu-desktop-설치">ubuntu-desktop 설치</h2>
+<p>최대한 가벼운 시스템 구성을 위해 미니멀한 설치 옵션을 주겠다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo apt install ubuntu-desktop-minimal
+</code></pre></div><p>또는 폴더 아이콘이나 light/dark 모드 설정에 문제가 생겨도 상관이 없다고 생각한다면 더 미니멀하게 설치할 수도 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo apt install --no-install-recommends ubuntu-desktop-minimal
+</code></pre></div><p><img src="/ubuntu-server-gui-rdp/1.png" alt="img"></p>
+<p>설치가 완료되면 gui를 실행한다. 단 이 명령은 홈서버 노트북에서 입력해야 한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">startx
+</code></pre></div><p><img src="/ubuntu-server-gui-rdp/2.png" alt="img"></p>
+<p>잠시 기다리면 소프트웨어 업데이터가 나오는데 restart now를 누른다.</p>
+<p><img src="/ubuntu-server-gui-rdp/3.png" alt="img"></p>
+<p>이제 정상적으로 ubuntu desktop이 설치가 되었다.</p>
+<h2 id="runlevel-설정">runlevel 설정</h2>
+<p>부팅 시 xwindow (gui) 가 자동으로 실행되지 않게 하려면</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo systemctl set-default multi-user
+</code></pre></div><p>다시 xwindow가 자동으로 실행되게 하려면</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo systemctl set-default graphical
+</code></pre></div><p>어차피 vmware를 통해서 windows vm을 돌리는게 최종 목표이니 그냥 나는 gui를 자동 실행되게 하겠다. gui가 필요할 때 집 밖에 있으면 홈서버 노트북에서 startx 명령을 입력할 수 없기 때문이다.</p>
+<h2 id="mac에서-rdp를-사용하여-접속">mac에서 rdp를 사용하여 접속</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo apt-get install xrdp
+</code></pre></div><p><code>/etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla</code> 에 아래와 같은 내용을 입력한다.</p>
+<pre tabindex="0"><code class="language-pkla" data-lang="pkla">[Allow Colord all Users]
+Identity=unix-user:*
+Action=org.freedesktop.color-manager.create-device;org.freedesktop.color-manager.create-profile;org.freedesktop.color-manager.delete-device;org.freedesktop.color-manager.delete-profile;org.freedesktop.color-manager.modify-device;org.freedesktop.color-manager.modify-profile
+ResultAny=no
+ResultInactive=no
+ResultActive=yes
+</code></pre><p><code>/etc/xrdp/xrdp.ini</code> 에서 포트를 원하는 값으로 변경할 수도 있다.</p>
+<p><img src="/ubuntu-server-gui-rdp/4.png" alt="img"></p>
+<p>그 후 windows remote desktop 앱에서 호스트를 입력하고 username, password를 입력해주면 접속이 된다.</p>
+</section>
+
+  
+  
+  <footer class="post-tags">
+     
+    <a href="https://devleo.wtf/tags/linux">linux</a>
+    
+  </footer>
+  
+
+  
+  
+  
+  <nav class="post-nav">
+    
+    <a class="prev" href="https://devleo.wtf/posts/poco-f1-install-miui-12.6/"><span>←</span><span>Poco F1 Install Miui 12.6</span></a>
+     
+    <a class="next" href="https://devleo.wtf/posts/hns-domain/"><span>My Domain History and Brief Explanation of Handshake Domains</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+  <div id="disqus_thread" class="post-comments"></div>
+  <script>
+    var disqusShortname = 'b-dv-p';
+    var script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2022 <a href="https://devleo.wtf/">Devleo</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>

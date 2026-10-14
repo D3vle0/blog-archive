@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>CTFd Remove Default Banner - Devleo</title>
+
+  
+  
+  <meta name="description" content="2021년 10월 31일 작성한 글입니다.
+문제 발생 교내 자율동아리를 위한 CTFd 서버를 구축하다가 생긴 일이다.
+A cool CTF platform from ctfd.io Follow us on social media: Click here to login and setup your CTF 예전에는 기본 배너를 admin panel &gt; config &gt; theme 에서 없애줄 수 있었는데 업그레이드가 되며 안되는듯 하다.
+결국 소스코드를 분석하여 없애는 방법을 찾아냈다.
+grep 으로 문자열 검색 grep -r &#39;to login and setup your CTF&#39; . &ldquo;to login and setup your CTF&rdquo; 라는 문자열이 포함된 파일을 검색한다." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://devleo.wtf/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="https://devleo.wtf/an-old-hope.min.css" />
+  <script
+    defer
+    src="https://devleo.wtf/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="https://devleo.wtf/theme.png" />
+
+  
+  <link rel="preload" as="image" href="https://devleo.wtf/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://devleo.wtf/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://devleo.wtf/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.0" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="CTFd Remove Default Banner" />
+<meta property="og:description" content="2021년 10월 31일 작성한 글입니다.
+문제 발생 교내 자율동아리를 위한 CTFd 서버를 구축하다가 생긴 일이다.
+A cool CTF platform from ctfd.io Follow us on social media: Click here to login and setup your CTF 예전에는 기본 배너를 admin panel &gt; config &gt; theme 에서 없애줄 수 있었는데 업그레이드가 되며 안되는듯 하다.
+결국 소스코드를 분석하여 없애는 방법을 찾아냈다.
+grep 으로 문자열 검색 grep -r &#39;to login and setup your CTF&#39; . &ldquo;to login and setup your CTF&rdquo; 라는 문자열이 포함된 파일을 검색한다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://devleo.wtf/posts/ctfd-remove-default-banner/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-29T14:30:23+09:00" />
+<meta property="article:modified_time" content="2022-01-29T14:30:23+09:00" />
+
+
+  
+  <meta itemprop="name" content="CTFd Remove Default Banner">
+<meta itemprop="description" content="2021년 10월 31일 작성한 글입니다.
+문제 발생 교내 자율동아리를 위한 CTFd 서버를 구축하다가 생긴 일이다.
+A cool CTF platform from ctfd.io Follow us on social media: Click here to login and setup your CTF 예전에는 기본 배너를 admin panel &gt; config &gt; theme 에서 없애줄 수 있었는데 업그레이드가 되며 안되는듯 하다.
+결국 소스코드를 분석하여 없애는 방법을 찾아냈다.
+grep 으로 문자열 검색 grep -r &#39;to login and setup your CTF&#39; . &ldquo;to login and setup your CTF&rdquo; 라는 문자열이 포함된 파일을 검색한다."><meta itemprop="datePublished" content="2022-01-29T14:30:23+09:00" />
+<meta itemprop="dateModified" content="2022-01-29T14:30:23+09:00" />
+<meta itemprop="wordCount" content="253">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CTFd Remove Default Banner"/>
+<meta name="twitter:description" content="2021년 10월 31일 작성한 글입니다.
+문제 발생 교내 자율동아리를 위한 CTFd 서버를 구축하다가 생긴 일이다.
+A cool CTF platform from ctfd.io Follow us on social media: Click here to login and setup your CTF 예전에는 기본 배너를 admin panel &gt; config &gt; theme 에서 없애줄 수 있었는데 업그레이드가 되며 안되는듯 하다.
+결국 소스코드를 분석하여 없애는 방법을 찾아냈다.
+grep 으로 문자열 검색 grep -r &#39;to login and setup your CTF&#39; . &ldquo;to login and setup your CTF&rdquo; 라는 문자열이 포함된 파일을 검색한다."/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="true">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="https://devleo.wtf/">Devleo</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+  <nav class="menu">
+    
+    <a class="" href="/about/">About</a>
+    
+  </nav>
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/d3vle0"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      <time>Jan 29, 2022</time>
+      
+    </p>
+    <h1>CTFd Remove Default Banner</h1>
+  </header>
+  <section class="post-content"><p>2021년 10월 31일 작성한 글입니다.</p>
+<h2 id="문제-발생">문제 발생</h2>
+<p>교내 자율동아리를 위한 CTFd 서버를 구축하다가 생긴 일이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">A cool CTF platform from ctfd.io
+
+Follow us on social media:
+Click here to login and setup your CTF
+</code></pre></div><p>예전에는 기본 배너를 <code>admin panel &gt; config &gt; theme</code> 에서 없애줄 수 있었는데 업그레이드가 되며 안되는듯 하다.<br>
+결국 소스코드를 분석하여 없애는 방법을 찾아냈다.</p>
+<h2 id="grep-으로-문자열-검색">grep 으로 문자열 검색</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">grep -r <span style="color:#e6db74">&#39;to login and setup your CTF&#39;</span> .
+</code></pre></div><p>&ldquo;to login and setup your CTF&rdquo; 라는 문자열이 포함된 파일을 검색한다.</p>
+<p><img src="https://cdn.discordapp.com/attachments/794556029555703832/904175566352179200/Screen_Shot_2021-10-31_at_10.10.47_AM.png" alt=""></p>
+<p><code>./CTFd/views.py</code> 의 index 변수를 수정해도 없어지지 않았다.<br>
+바로 아래에 <code>./CTFd/ctfd.db</code> 파일에도 해당 문자열이 있다는데 sqlite3를 이용해 열어보자.</p>
+<h2 id="sqlite-table-수정">sqlite table 수정</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sqlite3 ctfd.db
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">.<span style="color:#66d9ef">schema</span>
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> pages;
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ae81ff">1</span><span style="color:#f92672">||</span><span style="color:#66d9ef">index</span><span style="color:#f92672">|&lt;</span>div <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;row&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;</span>div <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;col-md-6 offset-md-3&#34;</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;</span>img <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;w-100 mx-auto d-block&#34;</span> style<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;max-width: 500px;padding: 50px;padding-top: 14vh;&#34;</span> src<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/themes/core/static/img/logo.png?d=1d53abea&#34;</span> <span style="color:#f92672">/&gt;</span>
+        <span style="color:#f92672">&lt;</span>h3 <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-center&#34;</span><span style="color:#f92672">&gt;</span>
+            <span style="color:#f92672">&lt;</span>p<span style="color:#f92672">&gt;</span>A cool CTF platform <span style="color:#66d9ef">from</span> <span style="color:#f92672">&lt;</span>a href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://ctfd.io&#34;</span><span style="color:#f92672">&gt;</span>ctfd.io<span style="color:#f92672">&lt;/</span>a<span style="color:#f92672">&gt;&lt;/</span>p<span style="color:#f92672">&gt;</span>
+            <span style="color:#f92672">&lt;</span>p<span style="color:#f92672">&gt;</span>Follow us <span style="color:#66d9ef">on</span> social media:<span style="color:#f92672">&lt;/</span>p<span style="color:#f92672">&gt;</span>
+            <span style="color:#f92672">&lt;</span>a href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://twitter.com/ctfdio&#34;</span><span style="color:#f92672">&gt;&lt;</span>i <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fab fa-twitter fa-2x&#34;</span> aria<span style="color:#f92672">-</span>hidden<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;&lt;/</span>i<span style="color:#f92672">&gt;&lt;/</span>a<span style="color:#f92672">&gt;&amp;</span>nbsp;
+            <span style="color:#f92672">&lt;</span>a href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://facebook.com/ctfdio&#34;</span><span style="color:#f92672">&gt;&lt;</span>i <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fab fa-facebook fa-2x&#34;</span> aria<span style="color:#f92672">-</span>hidden<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;&lt;/</span>i<span style="color:#f92672">&gt;&lt;/</span>a<span style="color:#f92672">&gt;&amp;</span>nbsp;
+            <span style="color:#f92672">&lt;</span>a href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://github.com/ctfd&#34;</span><span style="color:#f92672">&gt;&lt;</span>i <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fab fa-github fa-2x&#34;</span> aria<span style="color:#f92672">-</span>hidden<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;&lt;/</span>i<span style="color:#f92672">&gt;&lt;/</span>a<span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;/</span>h3<span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;</span>br<span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;</span>h4 <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-center&#34;</span><span style="color:#f92672">&gt;</span>
+            <span style="color:#f92672">&lt;</span>a href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;admin&#34;</span><span style="color:#f92672">&gt;</span>Click here<span style="color:#f92672">&lt;/</span>a<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">to</span> login <span style="color:#66d9ef">and</span> setup your CTF
+        <span style="color:#f92672">&lt;/</span>h4<span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;|</span><span style="color:#ae81ff">0</span><span style="color:#f92672">|||</span>markdown
+</code></pre></div><p>이렇게 생긴 table이 나온다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> pages (
+        id INTEGER <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>, 
+        title VARCHAR(<span style="color:#ae81ff">80</span>), 
+        route VARCHAR(<span style="color:#ae81ff">128</span>), 
+        content TEXT, 
+        draft BOOLEAN, 
+        hidden BOOLEAN, 
+        auth_required BOOLEAN, 
+        format VARCHAR(<span style="color:#ae81ff">80</span>), 
+        <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (id), 
+        <span style="color:#66d9ef">UNIQUE</span> (route), 
+        <span style="color:#66d9ef">CHECK</span> (draft <span style="color:#66d9ef">IN</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)), 
+        <span style="color:#66d9ef">CHECK</span> (hidden <span style="color:#66d9ef">IN</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)), 
+        <span style="color:#66d9ef">CHECK</span> (auth_required <span style="color:#66d9ef">IN</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))
+);
+</code></pre></div><p>pages table 의 scheme 은 위와 같으므로 id가 1인 row 중에서 content 값을 수정하면 되겠다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">UPDATE</span> pages <span style="color:#66d9ef">SET</span> content<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aaaaa&#34;</span> <span style="color:#66d9ef">WHERE</span> id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+</code></pre></div><p>다시 CTFd 서버를 켜면&hellip;</p>
+<p><img src="https://cdn.discordapp.com/attachments/794556029555703832/904178484132347904/Screen_Shot_2021-10-31_at_10.22.25_AM.png" alt=""></p>
+<p>기본 banner 가 사라졌다!</p>
+<p>참고로 위 테마는 <a href="https://github.com/chainflag/ctfd-neon-theme">https://github.com/chainflag/ctfd-neon-theme</a> 이곳에서 다운받았다.</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+    
+    <a class="prev" href="https://devleo.wtf/posts/hns-domain/"><span>←</span><span>My Domain History and Brief Explanation of Handshake Domains</span></a>
+     
+    <a class="next" href="https://devleo.wtf/posts/suninatas-32/"><span>SuNiNaTaS 32 Solution</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+  <div id="disqus_thread" class="post-comments"></div>
+  <script>
+    var disqusShortname = 'b-dv-p';
+    var script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2022 <a href="https://devleo.wtf/">Devleo</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>

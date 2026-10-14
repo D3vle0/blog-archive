@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on Devleo</title>
+    <link>https://devleo.wtf/tags/linux/</link>
+    <description>Recent content in linux on Devleo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>© 2022 Devleo</copyright>
+    <lastBuildDate>Fri, 11 Feb 2022 09:38:38 +0900</lastBuildDate><atom:link href="https://devleo.wtf/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Install GUI in Ubuntu Server and Connect with RDP</title>
+      <link>https://devleo.wtf/posts/ubuntu-server-gui-rdp/</link>
+      <pubDate>Fri, 11 Feb 2022 09:38:38 +0900</pubDate>
+      
+      <guid>https://devleo.wtf/posts/ubuntu-server-gui-rdp/</guid>
+      <description>사용 환경  Ubuntu Server 20.04.3 LTS macOS Monterey 12.1  GUI의 필요성 홈서버에 windows vm을 설치할 일이 생겨 qemu로 설치를 하고, ssh -X 옵션과 xquartz를 통해 맥에서 해당 vm을 띄우는 세팅을 했는데, 안정성이 매우 떨어져 결국 ubuntu server에 gnome gui를 올리고 rdp로 접속하여 vmware를 통해 windows vm을 세팅하는 방향을 선택했다.
+서버에 gui가 돌아간다는게 참 불편하긴 하지만 때로는 cli보다는 gui 환경에서 세팅해야 편한 작업들이 꽤 있기 때문에 이번 기회에 설치를 해보고, 이 글에서는 아래의 순서대로 글을 작성하겠다.</description>
+    </item>
+    
+  </channel>
+</rss>

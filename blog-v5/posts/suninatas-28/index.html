@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>SuNiNaTaS 28 Solution - Devleo</title>
+
+  
+  
+  <meta name="description" content="문제 풀이 요약  zip 파일 구조 분석 flag bit 변조 후 압축 해제 base64 decode  문제 풀이 문제에서 zip 파일이 하나 주어진다.
+그러나 어떤 문자열을 입력해봐도 풀리지 않고, fcrackzip 과 같은 zip 크래킹 툴로도 해결되지 않는다. 이 파일은 비밀번호가 걸려 있지 않은데 걸린 척 위장되어 있는 파일이다.
+flag bit이 암호화를 담당하는 부분인데, 해당 값을 00 00으로 변조하면 된다.
+압축을 풀면 아래의 파일들이 나오고, Am_I_Key.zip 안의 There_is_key.txt 에 dGE1dHlfSDR6M2xudXRfY29mZmVl 가 나온다." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://devleo.wtf/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="https://devleo.wtf/an-old-hope.min.css" />
+  <script
+    defer
+    src="https://devleo.wtf/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="https://devleo.wtf/theme.png" />
+
+  
+  <link rel="preload" as="image" href="https://devleo.wtf/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://devleo.wtf/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://devleo.wtf/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.0" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="SuNiNaTaS 28 Solution" />
+<meta property="og:description" content="문제 풀이 요약  zip 파일 구조 분석 flag bit 변조 후 압축 해제 base64 decode  문제 풀이 문제에서 zip 파일이 하나 주어진다.
+그러나 어떤 문자열을 입력해봐도 풀리지 않고, fcrackzip 과 같은 zip 크래킹 툴로도 해결되지 않는다. 이 파일은 비밀번호가 걸려 있지 않은데 걸린 척 위장되어 있는 파일이다.
+flag bit이 암호화를 담당하는 부분인데, 해당 값을 00 00으로 변조하면 된다.
+압축을 풀면 아래의 파일들이 나오고, Am_I_Key.zip 안의 There_is_key.txt 에 dGE1dHlfSDR6M2xudXRfY29mZmVl 가 나온다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://devleo.wtf/posts/suninatas-28/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-25T21:57:59+09:00" />
+<meta property="article:modified_time" content="2022-01-25T21:57:59+09:00" />
+
+
+  
+  <meta itemprop="name" content="SuNiNaTaS 28 Solution">
+<meta itemprop="description" content="문제 풀이 요약  zip 파일 구조 분석 flag bit 변조 후 압축 해제 base64 decode  문제 풀이 문제에서 zip 파일이 하나 주어진다.
+그러나 어떤 문자열을 입력해봐도 풀리지 않고, fcrackzip 과 같은 zip 크래킹 툴로도 해결되지 않는다. 이 파일은 비밀번호가 걸려 있지 않은데 걸린 척 위장되어 있는 파일이다.
+flag bit이 암호화를 담당하는 부분인데, 해당 값을 00 00으로 변조하면 된다.
+압축을 풀면 아래의 파일들이 나오고, Am_I_Key.zip 안의 There_is_key.txt 에 dGE1dHlfSDR6M2xudXRfY29mZmVl 가 나온다."><meta itemprop="datePublished" content="2022-01-25T21:57:59+09:00" />
+<meta itemprop="dateModified" content="2022-01-25T21:57:59+09:00" />
+<meta itemprop="wordCount" content="78">
+<meta itemprop="keywords" content="hacking,suninatas," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SuNiNaTaS 28 Solution"/>
+<meta name="twitter:description" content="문제 풀이 요약  zip 파일 구조 분석 flag bit 변조 후 압축 해제 base64 decode  문제 풀이 문제에서 zip 파일이 하나 주어진다.
+그러나 어떤 문자열을 입력해봐도 풀리지 않고, fcrackzip 과 같은 zip 크래킹 툴로도 해결되지 않는다. 이 파일은 비밀번호가 걸려 있지 않은데 걸린 척 위장되어 있는 파일이다.
+flag bit이 암호화를 담당하는 부분인데, 해당 값을 00 00으로 변조하면 된다.
+압축을 풀면 아래의 파일들이 나오고, Am_I_Key.zip 안의 There_is_key.txt 에 dGE1dHlfSDR6M2xudXRfY29mZmVl 가 나온다."/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="true">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="https://devleo.wtf/">Devleo</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+  <nav class="menu">
+    
+    <a class="" href="/about/">About</a>
+    
+  </nav>
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/d3vle0"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      <time>Jan 25, 2022</time>
+      
+    </p>
+    <h1>SuNiNaTaS 28 Solution</h1>
+  </header>
+  <section class="post-content"><h2 id="문제-풀이-요약">문제 풀이 요약</h2>
+<ol>
+<li>zip 파일 구조 분석</li>
+<li>flag bit 변조 후 압축 해제</li>
+<li>base64 decode</li>
+</ol>
+<h2 id="문제-풀이">문제 풀이</h2>
+<p>문제에서 zip 파일이 하나 주어진다.</p>
+<p><img src="/suninatas-28/1.png" alt="img"></p>
+<p>그러나 어떤 문자열을 입력해봐도 풀리지 않고, fcrackzip 과 같은 zip 크래킹 툴로도 해결되지 않는다. 이 파일은 비밀번호가 걸려 있지 않은데 걸린 척 위장되어 있는 파일이다.</p>
+<p><img src="/suninatas-28/2.png" alt="img"></p>
+<p>flag bit이 암호화를 담당하는 부분인데, 해당 값을 <code>00 00</code>으로 변조하면 된다.</p>
+<p><img src="/suninatas-28/3.png" alt="img"></p>
+<p>압축을 풀면 아래의 파일들이 나오고, <code>Am_I_Key.zip</code> 안의 <code>There_is_key.txt</code> 에 <code>dGE1dHlfSDR6M2xudXRfY29mZmVl</code> 가 나온다. 이 값을 base64 decode 하면 된다.</p>
+<p><img src="/suninatas-28/4.png" alt="img"></p>
+<blockquote>
+<p>FLAG: <code>ta5ty_H4z3lnut_coffee</code></p>
+</blockquote>
+</section>
+
+  
+  
+  <footer class="post-tags">
+     
+    <a href="https://devleo.wtf/tags/hacking">hacking</a>
+     
+    <a href="https://devleo.wtf/tags/suninatas">suninatas</a>
+    
+  </footer>
+  
+
+  
+  
+  
+  <nav class="post-nav">
+    
+    <a class="prev" href="https://devleo.wtf/posts/suninatas-29/"><span>←</span><span>SuNiNaTaS 29 Solution</span></a>
+     
+    <a class="next" href="https://devleo.wtf/posts/suninatas-26/"><span>SuNiNaTaS 26 Solution</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+  <div id="disqus_thread" class="post-comments"></div>
+  <script>
+    var disqusShortname = 'b-dv-p';
+    var script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2022 <a href="https://devleo.wtf/">Devleo</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>SuNiNaTaS 29 Solution - Devleo</title>
+
+  
+  
+  <meta name="description" content="문제 풀이 요약  header 체크 후 FTK Imager로 분석 dns host 파일 체크 키로거 프로그램 찾기 webcache를 통해 다운로드 기록 찾기  문제 풀이 유준혁은 PC가 고장나서 형 유성준에게 PC를 고쳐 달라고 했다. 그런데, 유성준은 동생의 PC를 고치면서 몇 가지 장난을 했다. 당신은 이 PC를 정상으로 돌려 놓아야 한다.
+ 웹 서핑은 잘 되는데, 네이버에만 들어가면 사이버 경찰청 차단 화면으로 넘어간다. 원인을 찾으면 Key가 보인다. 유성준이 설치 해 놓은 키로거의 절대경로 및 파일명은?" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://devleo.wtf/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="https://devleo.wtf/an-old-hope.min.css" />
+  <script
+    defer
+    src="https://devleo.wtf/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="https://devleo.wtf/theme.png" />
+
+  
+  <link rel="preload" as="image" href="https://devleo.wtf/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://devleo.wtf/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://devleo.wtf/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.0" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="SuNiNaTaS 29 Solution" />
+<meta property="og:description" content="문제 풀이 요약  header 체크 후 FTK Imager로 분석 dns host 파일 체크 키로거 프로그램 찾기 webcache를 통해 다운로드 기록 찾기  문제 풀이 유준혁은 PC가 고장나서 형 유성준에게 PC를 고쳐 달라고 했다. 그런데, 유성준은 동생의 PC를 고치면서 몇 가지 장난을 했다. 당신은 이 PC를 정상으로 돌려 놓아야 한다.
+ 웹 서핑은 잘 되는데, 네이버에만 들어가면 사이버 경찰청 차단 화면으로 넘어간다. 원인을 찾으면 Key가 보인다. 유성준이 설치 해 놓은 키로거의 절대경로 및 파일명은?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://devleo.wtf/posts/suninatas-29/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-25T22:16:04+09:00" />
+<meta property="article:modified_time" content="2022-01-25T22:16:04+09:00" />
+
+
+  
+  <meta itemprop="name" content="SuNiNaTaS 29 Solution">
+<meta itemprop="description" content="문제 풀이 요약  header 체크 후 FTK Imager로 분석 dns host 파일 체크 키로거 프로그램 찾기 webcache를 통해 다운로드 기록 찾기  문제 풀이 유준혁은 PC가 고장나서 형 유성준에게 PC를 고쳐 달라고 했다. 그런데, 유성준은 동생의 PC를 고치면서 몇 가지 장난을 했다. 당신은 이 PC를 정상으로 돌려 놓아야 한다.
+ 웹 서핑은 잘 되는데, 네이버에만 들어가면 사이버 경찰청 차단 화면으로 넘어간다. 원인을 찾으면 Key가 보인다. 유성준이 설치 해 놓은 키로거의 절대경로 및 파일명은?"><meta itemprop="datePublished" content="2022-01-25T22:16:04+09:00" />
+<meta itemprop="dateModified" content="2022-01-25T22:16:04+09:00" />
+<meta itemprop="wordCount" content="414">
+<meta itemprop="keywords" content="hacking,suninatas," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SuNiNaTaS 29 Solution"/>
+<meta name="twitter:description" content="문제 풀이 요약  header 체크 후 FTK Imager로 분석 dns host 파일 체크 키로거 프로그램 찾기 webcache를 통해 다운로드 기록 찾기  문제 풀이 유준혁은 PC가 고장나서 형 유성준에게 PC를 고쳐 달라고 했다. 그런데, 유성준은 동생의 PC를 고치면서 몇 가지 장난을 했다. 당신은 이 PC를 정상으로 돌려 놓아야 한다.
+ 웹 서핑은 잘 되는데, 네이버에만 들어가면 사이버 경찰청 차단 화면으로 넘어간다. 원인을 찾으면 Key가 보인다. 유성준이 설치 해 놓은 키로거의 절대경로 및 파일명은?"/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="true">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="https://devleo.wtf/">Devleo</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+  <nav class="menu">
+    
+    <a class="" href="/about/">About</a>
+    
+  </nav>
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/d3vle0"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      <time>Jan 25, 2022</time>
+      
+    </p>
+    <h1>SuNiNaTaS 29 Solution</h1>
+  </header>
+  <section class="post-content"><h2 id="문제-풀이-요약">문제 풀이 요약</h2>
+<ol>
+<li>header 체크 후 <code>FTK Imager</code>로 분석</li>
+<li>dns host 파일 체크</li>
+<li>키로거 프로그램 찾기</li>
+<li>webcache를 통해 다운로드 기록 찾기</li>
+</ol>
+<h2 id="문제-풀이">문제 풀이</h2>
+<p>유준혁은 PC가 고장나서 형 유성준에게 PC를 고쳐 달라고 했다.
+그런데, 유성준은 동생의 PC를 고치면서 몇 가지 장난을 했다.
+당신은 이 PC를 정상으로 돌려 놓아야 한다.</p>
+<ol>
+<li>웹 서핑은 잘 되는데, 네이버에만 들어가면 사이버 경찰청 차단 화면으로 넘어간다. 원인을 찾으면 Key가 보인다.</li>
+<li>유성준이 설치 해 놓은 키로거의 절대경로 및 파일명은?(모두 소문자) ex) c:\windows\notepad.exe</li>
+<li>키로거가 다운로드 된 시간은? ex) 2016-05-27_22:00:00 (yyyy-mm-dd_hh:mm:ss)</li>
+<li>키로거를 통해서 알아내고자 했던 내용은 무엇인가? 내용을 찾으면 Key가 보인다.</li>
+</ol>
+<p>인증키 형식: lowercase(MD5(1번키+2번답+3번답+4번키))</p>
+<h3 id="문제-파일-분석">문제 파일 분석</h3>
+<p><img src="/suninatas-29/1.png" alt="img"></p>
+<p>header가 <code>45 47 47</code>인 것으로 보아 <code>.egg</code> 압축 파일일 것이다. 확장자 변경 후 반디집으로 압축을 풀면 <code>vmdk</code> 파일이 나오고 해당 파일을 FTK Imager 에 올린다.</p>
+<p><img src="/suninatas-29/2.png" alt="img"></p>
+<p>Windows 7 기반 시스템이다.</p>
+<h3 id="1번">1번</h3>
+<p>네이버에만 들어가면 사이버 경찰청 차단 화면으로 넘어간다. 이런 현상이 일어나는 이유는 host 파일이 변조되었기 때문에 일어났을 것이다. 따라서 윈도우 시스템 상의 host 파일인 <code>C:\Windows\System32\drivers\etc\hosts</code> 파일을 확인한다.</p>
+<pre tabindex="0"><code># Copyright (c) 1993-2009 Microsoft Corp.
+#
+# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+#
+# This file contains the mappings of IP addresses to host names. Each
+# entry should be kept on an individual line. The IP address should
+# be placed in the first column followed by the corresponding host name.
+# The IP address and the host name should be separated by at least one
+# space.
+#
+# Additionally, comments (such as these) may be inserted on individual
+# lines or following the machine name denoted by a '#' symbol.
+#
+# For example:
+#
+#      102.54.94.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+       121.189.57.82    naver.com
+       121.189.57.82    www.naver.com
+#
+#
+#      C0ngr4tur4ti0ns!! This is a Keeeeeeeeeeey : what_the_he11_1s_keey
+#
+#
+# localhost name resolution is handled within DNS itself.
+#	127.0.0.1       localhost
+#	::1             localhost
+</code></pre><blockquote>
+<p>1번키: <code>what_the_he11_1s_keey</code></p>
+</blockquote>
+<h3 id="2번">2번</h3>
+<p>C드라이브 아래에 수상한 이름의 폴더가 있다.</p>
+<p><img src="/suninatas-29/3.png" alt="img"></p>
+<p><img src="/suninatas-29/4.png" alt="img"></p>
+<p><code>C:\v196vv8\v1valv\Computer1\24052016 #training\ss\</code> 경로에 많은 사진 파일들이 있는데 추출해서 확인해보자.</p>
+<p><code>5.jpg</code> 이름을 가진 파일에 키로거 프로그램의 이름과 경로가 적혀있다.</p>
+<p><img src="/suninatas-29/5.png" alt="img"></p>
+<blockquote>
+<p>2번키: <code>c:\v196vv8\v1tvr0.exe</code></p>
+</blockquote>
+<h3 id="3번">3번</h3>
+<p>여러 사진들이 있던 바로 상위폴더인 <code>C:\v196vv8\v1valv\Computer1\24052016 #training\</code>에 <code>w1.dat</code>과 <code>z1.dat</code> 파일이 존재하는데 이를 추출해보자.</p>
+<p><img src="/suninatas-29/7.png" alt="img"></p>
+<p><code>w1.dat</code>에 서버로부터 프로그램들을 다운받는 듯한 로그가 보이는데, 이 PC에는 IE 외에는 다른 브라우저가 설치되어 있지 않은 상태로 보아 브라우저 기록을 확인한다.</p>
+<p><code>C:\Users\training\Appdata\Local\Microsoft\Windows\History\History.IE5\index.dat</code></p>
+<p><img src="/suninatas-29/8.png" alt="img"></p>
+<p>일반적인 텍스트 에디터로 보면 다 깨지기 때문에 <code>index.dat analyzer</code>을 이용해서 분석할 수 있다.</p>
+<p><img src="/suninatas-29/9.png" alt="img"></p>
+<p>파일명에 키로거라고 적힌 exe 파일이 다운로드 된 시각은 2016-05-24_04:25:06 이다.</p>
+<blockquote>
+<p>3번키: <code>2016-05-24_04:25:06</code></p>
+</blockquote>
+<h3 id="4번">4번</h3>
+<p>나머지 파일 하나 <code>z1.dat</code>을 보자.</p>
+<p><img src="/suninatas-29/6.png" alt="img"></p>
+<blockquote>
+<p>4번키: <code>blackkey is a Good man</code></p>
+</blockquote>
+<h3 id="최종-답">최종 답</h3>
+<blockquote>
+<p>md5(what_the_he11_1s_keeyc:\v196vv8\v1tvr0.exe2016-05-24_04:25:06blackkey is a Good man) = <code>970f891e3667fce147b222cc9a8699d4</code></p>
+</blockquote>
+</section>
+
+  
+  
+  <footer class="post-tags">
+     
+    <a href="https://devleo.wtf/tags/hacking">hacking</a>
+     
+    <a href="https://devleo.wtf/tags/suninatas">suninatas</a>
+    
+  </footer>
+  
+
+  
+  
+  
+  <nav class="post-nav">
+    
+    <a class="prev" href="https://devleo.wtf/posts/suninatas-32/"><span>←</span><span>SuNiNaTaS 32 Solution</span></a>
+     
+    <a class="next" href="https://devleo.wtf/posts/suninatas-28/"><span>SuNiNaTaS 28 Solution</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+  <div id="disqus_thread" class="post-comments"></div>
+  <script>
+    var disqusShortname = 'b-dv-p';
+    var script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2022 <a href="https://devleo.wtf/">Devleo</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>
