@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Devleo's Webpage</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $(".menu-icon").on("click", function() {
+          $("nav ul").toggleClass("showing");
+      });
+  });
+  $(window).on("scroll", function() {
+    if($(window).scrollTop()) {
+          $('nav').addClass('black');
+    }
+
+    else {
+          $('nav').removeClass('black');
+    }
+  })
+</script>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <nav>
+        <div class="menu-icon">
+          <i class="fa fa-bars fa-2x"></i>
+        </div>
+        <div class="logo"><a href="index.html">DEVLEO</a></div>
+        <div class="menu">
+          <ul>
+            <li><a href="index.html#introblank">Profile</a></li>
+            <li><a href="index.html#projblank">Projects</a></li>
+            <li><a href="index.html#appsblank">Apps</a></li>
+            <li><a href="index.html#lessonblank">Lessons</a></li>
+            <li><a href="index.html#contactblank">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+  <br><br><br><br><br>
+<div id="image">
+    <img src="./kysis/0.JPG"  width="600px">
+    <p>신청 완료!</p>
+    <br><br><br><br>
+    <img src="./kysis/1.jpg"  width="600px">
+    <p>BoB 센터가 있는 대성디폴리스</p>
+    <br><br><br><br>
+    <img src="./kysis/4.jpg"  width="600px">
+    <img src="./kysis/5.jpg"  width="600px">
+    <img src="./kysis/6.jpg"  width="600px">
+    <img src="./kysis/7.jpg"  width="600px">
+    <p>세미나</p>
+    <br><br><br><br>
+    <img src="./kysis/3.jpg"  width="600px">
+    <p>BoB 센터 내의 카피테리아</p>
+    <br><br><br><br>
+    <img src="./kysis/2.jpg"  width="600px">
+    <p>27층에서 촬영한 경치</p>
+</div>
+</body>
+</html>
