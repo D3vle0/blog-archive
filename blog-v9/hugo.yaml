@@ -1,0 +1,183 @@
+baseURL: "https://devleo.us"
+title: Devleo's Blog
+# paginate: 10
+theme: PaperMod
+math: true
+
+enableInlineShortcodes: true
+ignoreLogs: 'warning-goldmark-raw-html'
+
+pagination:
+  disableAliases: false
+  pagerSize: 10
+  path: page
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: Devleo's Blog
+  description: "정보보안, AI, 블록체인, 프로그래밍을 공부하는 학생입니다."
+  keywords: [Blog, Portfolio, PaperMod]
+  author: Me
+  # author: ["Me", "You"] # multiple authors
+  images: ["<link or path of image for opengraph, twitter-cards>"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+  assets:
+    # disableHLJS: true # to disable highlight.js
+    # disableFingerprinting: true
+    favicon: "/favicon.ico"
+    favicon16x16: "/favicon.ico"
+    favicon32x32: "/favicon.ico"
+    apple_touch_icon: "/favicon.ico"
+    safari_pinned_tab: "/favicon.ico"
+
+  label:
+    text: "Devleo's Blog"
+    icon: /favicon.ico
+    iconHeight: 35
+
+  # profile-mode
+  profileMode:
+    enabled: false # needs to be explicitly set
+    title: ExampleSite
+    subtitle: "This is subtitle"
+    imageUrl: "<img location>"
+    imageWidth: 120
+    imageHeight: 120
+    imageTitle: my image
+    buttons:
+      - name: Posts
+        url: posts
+      - name: Tags
+        url: tags
+
+  # home-info mode
+  homeInfoParams:
+    Title: "Devleo's Blog"
+    Content: >
+      👋 정보보안, AI, 블록체인, 프로그래밍을 공부하는 학생입니다.  
+
+      현재 U.S. 8th Army에서 KATUSA로 군복무 중입니다.  
+
+      &nbsp;   
+
+      📨 Contact - `i[at]devleo[dot]us`  
+
+      &nbsp;  
+
+      - ![Spotify Recently Played](https://spotify-recently-played-readme.vercel.app/api?user=85o05xl09h5de8ngv9im0txhx&count=3)
+
+      &nbsp;  
+
+      - ![ETS Counter](https://ets-readme-counter.vercel.app/view?startdate=20250304&branch=army&lang=ko)  
+
+      👆 직접 만든 embed 전용 전역일 카운터에요. [코드는 여기에서 확인할 수 있어요!](https://github.com/k-atusa/ets-readme-counter)
+
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/D3vle0"
+    - name: rss
+      url: "/index.xml"
+    - name: email
+      url: "mailto:i@devleo.us"
+
+  analytics:
+    google:
+      SiteVerificationTag: "XYZabc"
+    bing:
+      SiteVerificationTag: "XYZabc"
+    yandex:
+      SiteVerificationTag: "XYZabc"
+
+  cover:
+    hidden: false # hide everywhere but not in structured data
+    hiddenInList: false # hide on list pages and home
+    hiddenInSingle: true # hide on single page
+
+  editPost:
+    URL: "https://github.com/d3vle0/blog-v6/content"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
+
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
+    keys: ["title", "permalink", "summary", "content"]
+menu:
+  main:
+    - identifier: categories
+      name: categories
+      url: /categories/
+      weight: 10
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 20
+    - identifier: search
+      name: search
+      url: /search/
+      weight: 30
+    # - identifier: example
+    #   name: example.org
+    #   url: https://example.org
+    #   weight: 20
+# Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
+pygmentsUseClasses: true
+markup:
+  highlight:
+    noClasses: false
+    # anchorLineNos: true
+    # codeFences: true
+    # guessSyntax: true
+    # lineNos: true
+    # style: monokai
+sitemap:
+  changefreq: daily
+  filename: sitemap.xml
+  priority: 0.5
+
+module:
+  imports:
+    - path: github.com/KKKZOZ/hugo-admonitions
+    - path: PaperMod

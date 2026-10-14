@@ -1,0 +1,18 @@
+{{- $payload := .Get "payload" -}}
+{{- if not $payload -}}
+<p class="hugo-protector-error">hugo-protector shortcode requires a payload attribute.</p>
+{{- else -}}
+{{- $prompt := default "Enter password" (.Get "prompt") -}}
+{{- $hint := .Get "hint" -}}
+{{- $button := default "Unlock" (.Get "button") -}}
+{{- $format := lower (default "html" (.Get "format")) -}}
+<div class="hugo-protector-block"
+     data-hugo-protector-mode="block"
+     data-hugo-protector-payload="{{ $payload }}"
+     data-hugo-protector-prompt="{{ $prompt }}"
+     data-hugo-protector-button="{{ $button }}"
+  data-hugo-protector-format="{{ $format }}"
+     {{ with $hint }}data-hugo-protector-hint="{{ . }}"{{ end }}>
+  <noscript>Please enable JavaScript to view this protected content.</noscript>
+</div>
+{{- end -}}

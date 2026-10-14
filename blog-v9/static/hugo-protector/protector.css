@@ -1,0 +1,169 @@
+[data-hugo-protector-mode="block"] {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.hugo-protector-form {
+  font-family: "Pretendard Variable", "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --protector-bg: rgba(255, 255, 255, 0.92);
+  --protector-border: rgba(148, 163, 184, 0.45);
+  --protector-text: #0f172a;
+  --protector-subtle: #475569;
+  --protector-input-bg: #f8fafc;
+  --protector-button-bg: #ffffff;
+  --protector-button-text: #0f172a;
+  --protector-shadow: rgba(15, 23, 42, 0.1);
+  background: var(--protector-bg);
+  border: 1px solid var(--protector-border);
+  border-radius: 0.85rem;
+  padding: 1.35rem;
+  max-width: 420px;
+  width: 100%;
+  color: var(--protector-text);
+  margin: 1.25rem auto;
+  box-shadow: 0 20px 45px var(--protector-shadow);
+  backdrop-filter: blur(14px);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.hugo-protector-form[data-theme="dark"] {
+  --protector-bg: rgba(15, 23, 42, 0.88);
+  --protector-border: rgba(148, 163, 184, 0.35);
+  --protector-text: #f8fafc;
+  --protector-subtle: #cbd5f5;
+  --protector-input-bg: rgba(15, 23, 42, 0.65);
+  --protector-button-bg: rgba(255, 255, 255, 0.05);
+  --protector-button-text: #f8fafc;
+  --protector-shadow: rgba(2, 6, 23, 0.55);
+}
+
+.hugo-protector-form * {
+  box-sizing: border-box;
+}
+
+.hugo-protector-header {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.65rem;
+  color: var(--protector-subtle);
+  font-size: 0.86rem;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.hugo-protector-icon {
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  color: var(--protector-subtle);
+}
+
+.hugo-protector-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--protector-text);
+  transition: color 0.2s ease;
+}
+
+.hugo-protector-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.hugo-protector-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hugo-protector-label {
+  font-size: 0.78rem;
+  color: var(--protector-subtle);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.hugo-protector-form input {
+  width: 100%;
+  border-radius: 0.4rem;
+  border: 1px solid var(--protector-border);
+  background: var(--protector-input-bg);
+  color: var(--protector-text);
+  padding: 0.62rem 0.85rem;
+  font-size: 0.9rem;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.hugo-protector-form input:focus {
+  border-color: #64748b;
+  background: var(--protector-bg);
+  outline: none;
+}
+
+.hugo-protector-form button {
+  border: 1px solid var(--protector-border);
+  border-radius: 0.5rem;
+  padding: 0.7rem 0.95rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--protector-button-text);
+  background: var(--protector-button-bg);
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.hugo-protector-form button:hover {
+  background: var(--protector-text);
+  color: var(--protector-bg);
+}
+
+.hugo-protector-form button:active {
+  transform: scale(0.995);
+}
+
+.hugo-protector-form form.is-working button {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.hugo-protector-footer {
+  margin-top: 0.9rem;
+}
+
+.hugo-protector-hint {
+  margin-top: 0;
+  font-size: 0.85rem;
+  color: var(--protector-subtle);
+  transition: color 0.2s ease;
+}
+
+.hugo-protector-message {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  min-height: 1rem;
+  color: var(--protector-text);
+  transition: color 0.2s ease;
+}
+
+.hugo-protector-message[data-state="error"] {
+  color: #f43f5e;
+}
+
+.hugo-protector-message[data-state="success"] {
+  color: #22c55e;
+}
+
+@media (max-width: 480px) {
+  .hugo-protector-form {
+    padding: 1.1rem;
+  }
+
+  .hugo-protector-header {
+    flex-direction: row;
+  }
+}

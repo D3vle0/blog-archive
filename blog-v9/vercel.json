@@ -1,0 +1,9 @@
+{
+  "build": {
+    "env": {
+      "HUGO_VERSION": "0.148.1",
+      "GO_VERSION": "1.25.5"
+    }
+  },
+  "buildCommand": "yum update && yum install -y golang && hugo --gc --minify"
+}

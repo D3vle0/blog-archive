@@ -1,0 +1,12 @@
+{{- $payload := .Params.protector_full_page_payload -}}
+{{- if $payload -}}
+{{- $prompt := default "Enter password to view this page" (.Params.protector_full_page_prompt) -}}
+{{- $target := default "main" (.Params.protector_full_page_target) -}}
+<div class="hugo-protector-page"
+     data-hugo-protector-mode="page"
+     data-hugo-protector-payload="{{ $payload }}"
+     data-hugo-protector-target="{{ $target }}"
+     data-hugo-protector-prompt="{{ $prompt }}">
+  <noscript>This page is protected; enable JavaScript to unlock it.</noscript>
+</div>
+{{- end -}}
